@@ -1,0 +1,15 @@
+Package: ambien
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Danielle",
+           family = "Navarro",
+           role = c("aut", "cre"),
+           email = "d.navarro@unsw.edu.au",
+           comment = c(ORCID = "0000-0001-7648-6578"))
+Description: What the package does (one paragraph).
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    ambient
