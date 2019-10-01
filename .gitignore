@@ -3,3 +3,4 @@ legacy
 .Rhistory
 .RData
 .workbch
+inst/doc

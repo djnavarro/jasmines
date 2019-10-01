@@ -3,3 +3,8 @@
 ^README\.Rmd$
 ^legacy$
 ^LICENSE\.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^.workbch$
+^vignettes/collage\.Rmd$

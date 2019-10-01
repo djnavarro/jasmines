@@ -7,11 +7,23 @@ Authors@R:
            role = c("aut", "cre"),
            email = "d.navarro@unsw.edu.au",
            comment = c(ORCID = "0000-0001-7648-6578"))
-Description: What the package does (one paragraph).
+Description: It doesn't do much, really.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    ambient
+    ambient,
+    purrr,
+    dplyr,
+    scico,
+    ggplot2,
+    tidyr,
+    stringr,
+    tibble
 URL: https://github.com/djnavarro/ambien
 BugReports: https://github.com/djnavarro/ambien/issues
+RoxygenNote: 6.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
