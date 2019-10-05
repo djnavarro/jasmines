@@ -1,5 +1,5 @@
-Package: ambien
-Title: Generative Art With Ambient
+Package: jasmines
+Title: Generative Art
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Danielle",
@@ -20,9 +20,16 @@ Imports:
     tidyr,
     stringr,
     tibble,
-    viridis
-URL: https://github.com/djnavarro/ambien
-BugReports: https://github.com/djnavarro/ambien/issues
+    viridis,
+    grImport,
+    animation,
+    methods,
+    progress,
+    magrittr,
+    gganimate,
+    e1071
+URL: https://github.com/djnavarro/jasmines
+BugReports: https://github.com/djnavarro/jasmines/issues
 RoxygenNote: 6.1.1
 Suggests: 
     knitr,

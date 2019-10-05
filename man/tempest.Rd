@@ -2,10 +2,30 @@
 % Please edit documentation in R/tempest.R
 \name{tempest}
 \alias{tempest}
-\title{Create tempest images}
+\title{Generate a tempest image}
 \usage{
-tempest(path = "tempest.png")
+tempest(file, seeds = 6, iterations = 6, scale = 0.02, alpha = 0.3,
+  grain = 10000, width = 6, palette = NULL, ...)
+}
+\arguments{
+\item{file}{where to save the file}
+
+\item{seeds}{how many "sticks" to use as the seed?}
+
+\item{iterations}{how many times should we iterate the curl noise?}
+
+\item{scale}{how large is each curl step?}
+
+\item{alpha}{how transparent is each line?}
+
+\item{grain}{how many points comprise a stick?}
+
+\item{width}{how wide are the lines?}
+
+\item{palette}{function generating a palette (default: viridis)}
+
+\item{...}{arguments to be passed to palette}
 }
 \description{
-Create tempest images
+Generate a tempest image
 }

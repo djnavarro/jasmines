@@ -1,4 +1,4 @@
-^ambien\.Rproj$
+^jasmines\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
 ^legacy$
@@ -7,4 +7,4 @@
 ^docs$
 ^pkgdown$
 ^.workbch$
-^vignettes/collage\.Rmd$
+
