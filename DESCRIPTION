@@ -19,7 +19,8 @@ Imports:
     ggplot2,
     tidyr,
     stringr,
-    tibble
+    tibble,
+    viridis
 URL: https://github.com/djnavarro/ambien
 BugReports: https://github.com/djnavarro/ambien/issues
 RoxygenNote: 6.1.1
