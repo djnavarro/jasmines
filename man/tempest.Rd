@@ -4,13 +4,14 @@
 \alias{tempest}
 \title{Generate a tempest image}
 \usage{
-tempest(file, seeds = 6, iterations = 6, scale = 0.02, alpha = 0.3,
-  grain = 10000, width = 6, palette = NULL, ...)
+tempest(file, seed = make_sticks(), iterations = 6, scale = 0.02,
+  alpha = 0.3, width = 6, box = NULL, zoom = TRUE,
+  palette = NULL, ...)
 }
 \arguments{
 \item{file}{where to save the file}
 
-\item{seeds}{how many "sticks" to use as the seed?}
+\item{seed}{data frame with x, y, id}
 
 \item{iterations}{how many times should we iterate the curl noise?}
 
@@ -18,9 +19,11 @@ tempest(file, seeds = 6, iterations = 6, scale = 0.02, alpha = 0.3,
 
 \item{alpha}{how transparent is each line?}
 
-\item{grain}{how many points comprise a stick?}
-
 \item{width}{how wide are the lines?}
+
+\item{box}{vector specifying the edges}
+
+\item{zoom}{rescale image to fit in the unit square?}
 
 \item{palette}{function generating a palette (default: viridis)}
 

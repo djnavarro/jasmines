@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tempest images using curl noise — tempest • jasmines</title>
+<title>Generate a tempest image — tempest • jasmines</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
 
 
-<meta property="og:title" content="Tempest images using curl noise — tempest" />
+<meta property="og:title" content="Generate a tempest image — tempest" />
 
-<meta property="og:description" content="Tempest images using curl noise" />
+<meta property="og:description" content="Generate a tempest image" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -103,25 +103,63 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tempest images using curl noise</h1>
+    <h1>Generate a tempest image</h1>
     <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/tempest.R'><code>R/tempest.R</code></a></small>
     <div class="hidden name"><code>tempest.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Tempest images using curl noise</p>
+    <p>Generate a tempest image</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>tempest</span>(<span class='no'>file</span>)</pre>
+    <pre class="usage"><span class='fu'>tempest</span>(<span class='no'>file</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='make_sticks.html'>make_sticks</a></span>(), <span class='kw'>iterations</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.02</span>,
+  <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.3</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>box</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>palette</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>file</th>
-      <td><p>where to safe file</p></td>
+      <td><p>where to save the file</p></td>
+    </tr>
+    <tr>
+      <th>seed</th>
+      <td><p>data frame with x, y, id</p></td>
+    </tr>
+    <tr>
+      <th>iterations</th>
+      <td><p>how many times should we iterate the curl noise?</p></td>
+    </tr>
+    <tr>
+      <th>scale</th>
+      <td><p>how large is each curl step?</p></td>
+    </tr>
+    <tr>
+      <th>alpha</th>
+      <td><p>how transparent is each line?</p></td>
+    </tr>
+    <tr>
+      <th>width</th>
+      <td><p>how wide are the lines?</p></td>
+    </tr>
+    <tr>
+      <th>box</th>
+      <td><p>vector specifying the edges</p></td>
+    </tr>
+    <tr>
+      <th>zoom</th>
+      <td><p>rescale image to fit in the unit square?</p></td>
+    </tr>
+    <tr>
+      <th>palette</th>
+      <td><p>function generating a palette (default: viridis)</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>arguments to be passed to palette</p></td>
     </tr>
     </table>
     
