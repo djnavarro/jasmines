@@ -54,6 +54,7 @@ make_bubbles <- function(n = 2, grain = 1000) {
 #' @param file where to save the file
 #' @param seed data frame with x, y, id
 #' @param iterations how many times should we iterate the curl noise?
+#' @param burnin how many iterations should we discard as burnin?
 #' @param scale how large is each curl step?
 #' @param alpha_init how transparent is each line?
 #' @param alpha_decay how does transparency decay over iterations?
@@ -70,9 +71,10 @@ tempest <- function(
   file,
   seed = make_sticks(), # seed points
   iterations = 6, # how many iterations to curl?
+  burnin = 0, # how many of the iterations do we not draw?
   scale = .02, # size of the curl step
   alpha_init = .3, # transparency of each line
-  alpha_decay = .01, # rate of decat
+  alpha_decay = .01, # rate of decay
   width = 6, # width of each line
   box = NULL, # size of the box
   zoom = TRUE, # zoom in/out so that the final image fits in unit square
@@ -134,8 +136,8 @@ tempest <- function(
   # draw to png file
   png(
     filename = file,
-    width = 3000,
-    height = 3000,
+    width = 4000,
+    height = 4000,
     bg = "black"
   )
 
