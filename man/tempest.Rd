@@ -5,7 +5,7 @@
 \title{Generate a tempest image}
 \usage{
 tempest(file = NULL, seed = make_sticks(), iterations = 6,
-  burnin = 0, scale = 0.02, alpha_init = 0.3, alpha_decay = 0.01,
+  burnin = 0, scale = 0.02, alpha_init = 0.3, alpha_decay = 0,
   width = 6, box = NULL, zoom = TRUE, seed_col = NULL,
   seed_fill = NULL, palette = NULL, ...)
 }

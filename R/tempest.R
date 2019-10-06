@@ -95,7 +95,7 @@ tempest <- function(
   burnin = 0, # how many of the iterations do we not draw?
   scale = .02, # size of the curl step
   alpha_init = .3, # transparency of each line
-  alpha_decay = .01, # rate of decay
+  alpha_decay = 0, # rate of decay
   width = 6, # width of each line
   box = NULL, # size of the box
   zoom = TRUE, # zoom in/out so that the final image fits in unit square
