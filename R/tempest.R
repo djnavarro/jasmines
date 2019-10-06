@@ -18,6 +18,27 @@ make_sticks <- function(n = 10, grain = 1000) {
   return(points)
 }
 
+#' Generate an even set of rows
+#'
+#' @param n how many rows
+#' @param grain how many points along each row
+#'
+#' @return a tibble with columns x, y and id
+#' @export
+make_rows <- function(n = 10, grain = 1000) {
+  make_row <- function(id, grain) {
+    return(tibble::tibble(
+      x = seq(0, 1, length.out = grain),
+      y = id/(n+1),
+      id = id
+    ))
+  }
+  points <- purrr::map_dfr(1:n, make_row, grain = grain)
+  return(points)
+}
+
+
+
 #' Generate a random set of bubbles
 #'
 #' @param n how many bubbles
@@ -135,11 +156,11 @@ tempest <- function(
 
   # draw to png file
   png(
-    filename = file,
-    width = 4000,
-    height = 4000,
-    bg = "black"
-  )
+      filename = file,
+      width = 4000,
+      height = 4000,
+      bg = "black"
+    )
 
   # setup the plot
   gap <- .05
@@ -150,19 +171,19 @@ tempest <- function(
   # plot a series of curl iterations
   for(i in 1:iterations) {
 
-    # create a colour palette for this iteration
-    cols <- palette(nrow(seed), (alpha_init) * (1 - alpha_decay)^(i-1), ...)
+      # create a colour palette for this iteration
+      cols <- palette(nrow(seed), (alpha_init) * (1 - alpha_decay)^(i-1), ...)
 
-    # draw the segments
-    graphics::segments(
-      x0 = (ribbon[[i]]$x -xmin) / (xmax - xmin),
-      y0 = (ribbon[[i]]$y - ymin) / (ymax - ymin),
-      x1 = (ribbon[[i+1]]$x - xmin) / (xmax - xmin),
-      y1 = (ribbon[[i+1]]$y - ymin) / (ymax - ymin),
-      col = cols[ribbon[[i+1]]$z],
-      lwd = width,
-    )
-  }
+      # draw the segments
+      graphics::segments(
+        x0 = (ribbon[[i]]$x -xmin) / (xmax - xmin),
+        y0 = (ribbon[[i]]$y - ymin) / (ymax - ymin),
+        x1 = (ribbon[[i+1]]$x - xmin) / (xmax - xmin),
+        y1 = (ribbon[[i+1]]$y - ymin) / (ymax - ymin),
+        col = cols[ribbon[[i+1]]$z],
+        lwd = width,
+      )
+    }
 
   # fill in the seed shape if requested
   if(!is.null(seed_fill)) {
@@ -191,7 +212,7 @@ tempest <- function(
   }
 
   # generate the file
-  grDevices::dev.off()
+    grDevices::dev.off()
 
   # reset device parameters
   graphics::par(op)

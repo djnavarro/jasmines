@@ -3,6 +3,7 @@
 export(bridge)
 export(collage)
 export(make_bubbles)
+export(make_rows)
 export(make_sticks)
 export(skyline)
 export(tempest)
