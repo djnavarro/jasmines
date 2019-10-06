@@ -1,9 +1,11 @@
 #' Animated GIF of Sydney skyline
 #'
 #' @param file path to gif
-#' @details Creates an animated gif of the Sydney skyline
+#' @details Creates an animated gif of the Sydney skyline. If \code{file}
+#' is specified it generates the gif, otherwise it creates the sequence
+#' of plots (useful if calling within R Markdown files)
 #' @export
-skyline <- function(file) {
+skyline <- function(file = NULL) {
 
   pb <- progress::progress_bar$new(total = 34)
 
@@ -60,20 +62,35 @@ skyline <- function(file) {
 
 
 
-  # write the animation
-  animation::saveGIF(
-    expr = {
+  # write the animation: if a file name is specified,
+  # write the results to a GIF...
+  if(!is.null(file)) {
+    animation::saveGIF(
+      expr = {
 
-      draw_state(skygrob, 2)
-      cycle_windows(skygrob)
-      draw_state(skygrob, 4)
-      flash_windows(skygrob, 3)
-      draw_state(skygrob, 2)
+        draw_state(skygrob, 2)
+        cycle_windows(skygrob)
+        draw_state(skygrob, 4)
+        flash_windows(skygrob, 3)
+        draw_state(skygrob, 2)
 
-    },
-    movie.name = file,
-    interval = .2
-  )
+      },
+      movie.name = file,
+      interval = .2
+    )
+
+  # or, if no file is specified, assume the calling function
+  # knows what to do with a sequence of plots (e.g., .Rmd) so
+  # just produce those outputs...
+  } else {
+
+    draw_state(skygrob, 2)
+    cycle_windows(skygrob)
+    draw_state(skygrob, 4)
+    flash_windows(skygrob, 3)
+    draw_state(skygrob, 2)
+
+  }
 
   return(invisible(NULL))
 }

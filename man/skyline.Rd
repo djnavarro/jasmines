@@ -4,7 +4,7 @@
 \alias{skyline}
 \title{Animated GIF of Sydney skyline}
 \usage{
-skyline(file)
+skyline(file = NULL)
 }
 \arguments{
 \item{file}{path to gif}
@@ -13,5 +13,7 @@ skyline(file)
 Animated GIF of Sydney skyline
 }
 \details{
-Creates an animated gif of the Sydney skyline
+Creates an animated gif of the Sydney skyline. If \code{file}
+is specified it generates the gif, otherwise it creates the sequence
+of plots (useful if calling within R Markdown files)
 }
