@@ -4,13 +4,13 @@
 \alias{tempest}
 \title{Generate a tempest image}
 \usage{
-tempest(file, seed = make_sticks(), iterations = 6, burnin = 0,
-  scale = 0.02, alpha_init = 0.3, alpha_decay = 0.01, width = 6,
-  box = NULL, zoom = TRUE, seed_col = NULL, seed_fill = NULL,
-  palette = NULL, ...)
+tempest(file = NULL, seed = make_sticks(), iterations = 6,
+  burnin = 0, scale = 0.02, alpha_init = 0.3, alpha_decay = 0.01,
+  width = 6, box = NULL, zoom = TRUE, seed_col = NULL,
+  seed_fill = NULL, palette = NULL, ...)
 }
 \arguments{
-\item{file}{where to save the file}
+\item{file}{where to save the file (default: NULL)}
 
 \item{seed}{data frame with x, y, id}
 
