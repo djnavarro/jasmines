@@ -5,8 +5,9 @@
 \title{Generate a tempest image}
 \usage{
 tempest(file, seed = make_sticks(), iterations = 6, scale = 0.02,
-  alpha = 0.3, width = 6, box = NULL, zoom = TRUE,
-  palette = NULL, ...)
+  alpha_init = 0.3, alpha_decay = 0.01, width = 6, box = NULL,
+  zoom = TRUE, seed_col = NULL, seed_fill = NULL, palette = NULL,
+  ...)
 }
 \arguments{
 \item{file}{where to save the file}
@@ -17,13 +18,19 @@ tempest(file, seed = make_sticks(), iterations = 6, scale = 0.02,
 
 \item{scale}{how large is each curl step?}
 
-\item{alpha}{how transparent is each line?}
+\item{alpha_init}{how transparent is each line?}
+
+\item{alpha_decay}{how does transparency decay over iterations?}
 
 \item{width}{how wide are the lines?}
 
 \item{box}{vector specifying the edges}
 
 \item{zoom}{rescale image to fit in the unit square?}
+
+\item{seed_col}{what colour to draw the seed? (default: NULL)}
+
+\item{seed_fill}{what colour to fill the seed? (default: NULL)}
 
 \item{palette}{function generating a palette (default: viridis)}
 

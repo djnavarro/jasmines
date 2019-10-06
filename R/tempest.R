@@ -55,10 +55,13 @@ make_bubbles <- function(n = 2, grain = 1000) {
 #' @param seed data frame with x, y, id
 #' @param iterations how many times should we iterate the curl noise?
 #' @param scale how large is each curl step?
-#' @param alpha how transparent is each line?
+#' @param alpha_init how transparent is each line?
+#' @param alpha_decay how does transparency decay over iterations?
 #' @param width how wide are the lines?
 #' @param box vector specifying the edges
 #' @param zoom rescale image to fit in the unit square?
+#' @param seed_col what colour to draw the seed? (default: NULL)
+#' @param seed_fill what colour to fill the seed? (default: NULL)
 #' @param palette function generating a palette (default: viridis)
 #' @param ... arguments to be passed to palette
 #'
@@ -68,10 +71,13 @@ tempest <- function(
   seed = make_sticks(), # seed points
   iterations = 6, # how many iterations to curl?
   scale = .02, # size of the curl step
-  alpha = .3, # transparency of each line
+  alpha_init = .3, # transparency of each line
+  alpha_decay = .01, # rate of decat
   width = 6, # width of each line
   box = NULL, # size of the box
   zoom = TRUE, # zoom in/out so that the final image fits in unit square
+  seed_col = NULL,
+  seed_fill = NULL,
   palette = NULL, # function to generate palette (args: n, alpha, ...)
   ... # options to pass to palette function
 ) {
@@ -82,9 +88,6 @@ tempest <- function(
       viridis::viridis(n, alpha, ...)
     }
   }
-
-  # create a colour palette
-  cols <- palette(nrow(seed), alpha, ...)
 
   # iterate each point through curl noise
   ribbon <- list()
@@ -111,6 +114,7 @@ tempest <- function(
     }
   }
 
+  # set the bounding box if there isn't one given
   if(is.null(box)) {
     box <- c(xmin = -.05, xmax = 1.05, ymin = -.05, ymax = 1.05)
   }
@@ -121,6 +125,20 @@ tempest <- function(
   ymin <- min(sapply(ribbon, function(r) {min(r$y)}))
   ymax <- max(sapply(ribbon, function(r) {max(r$y)}))
 
+  # force to the same scale
+  xmin <- min(xmin, ymin)
+  xmax <- max(xmax, ymax)
+  ymin <- xmin
+  ymax <- xmax
+
+  # draw to png file
+  png(
+    filename = file,
+    width = 3000,
+    height = 3000,
+    bg = "black"
+  )
+
   # setup the plot
   gap <- .05
   op <- graphics::par(bg = "black", pty = "s")
@@ -129,6 +147,11 @@ tempest <- function(
 
   # plot a series of curl iterations
   for(i in 1:iterations) {
+
+    # create a colour palette for this iteration
+    cols <- palette(nrow(seed), (alpha_init) * (1 - alpha_decay)^(i-1), ...)
+
+    # draw the segments
     graphics::segments(
       x0 = (ribbon[[i]]$x -xmin) / (xmax - xmin),
       y0 = (ribbon[[i]]$y - ymin) / (ymax - ymin),
@@ -139,13 +162,34 @@ tempest <- function(
     )
   }
 
+  # fill in the seed shape if requested
+  if(!is.null(seed_fill)) {
+    for(i in 1:max(seed$id)) {
+      s <- seed[seed$id == i,]
+      graphics::polygon(
+        x = (s$x - xmin)/(xmax - xmin),
+        y = (s$y - ymin)/(ymax - ymin),
+        col = seed_fill,
+        lwd= 1
+      )
+    }
+  }
+
+  # draw outline of seed shape if requested
+  if(!is.null(seed_col)) {
+    for(i in 1:max(seed$id)) {
+      s <- seed[seed$id == i,]
+      graphics::lines(
+        x = (s$x - xmin)/(xmax - xmin),
+        y = (s$y - ymin)/(ymax - ymin),
+        col = seed_col,
+        lwd= 10
+      )
+    }
+  }
+
   # generate the file
-  grDevices::dev.print(
-    device = grDevices::png,
-    filename = file,
-    width = 3000,
-    height = 3000
-  )
+  grDevices::dev.off()
 
   # reset device parameters
   graphics::par(op)
