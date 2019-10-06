@@ -72,7 +72,7 @@ make_bubbles <- function(n = 2, grain = 1000) {
 
 #' Generate a tempest image
 #'
-#' @param file where to save the file
+#' @param file where to save the file (default: NULL)
 #' @param seed data frame with x, y, id
 #' @param iterations how many times should we iterate the curl noise?
 #' @param burnin how many iterations should we discard as burnin?
@@ -89,7 +89,7 @@ make_bubbles <- function(n = 2, grain = 1000) {
 #'
 #' @export
 tempest <- function(
-  file,
+  file = NULL,
   seed = make_sticks(), # seed points
   iterations = 6, # how many iterations to curl?
   burnin = 0, # how many of the iterations do we not draw?
@@ -155,22 +155,23 @@ tempest <- function(
   ymax <- xmax
 
   # draw to png file
-  png(
+  if(!is.null(file)) {
+    grDevices::png(
       filename = file,
       width = 4000,
       height = 4000,
       bg = "black"
     )
+  }
 
   # setup the plot
-  gap <- .05
-  op <- graphics::par(bg = "black", pty = "s")
+  op <- graphics::par(bg = "black", pty = "s", mar = c(0,0,0,0))
   graphics::plot.new()
   graphics::plot.window(xlim = box[1:2], ylim = box[3:4])
 
   # plot a series of curl iterations
   for(i in 1:iterations) {
-
+    if(i > burnin) {
       # create a colour palette for this iteration
       cols <- palette(nrow(seed), (alpha_init) * (1 - alpha_decay)^(i-1), ...)
 
@@ -184,6 +185,7 @@ tempest <- function(
         lwd = width,
       )
     }
+  }
 
   # fill in the seed shape if requested
   if(!is.null(seed_fill)) {
@@ -212,7 +214,9 @@ tempest <- function(
   }
 
   # generate the file
+  if(!is.null(file)) {
     grDevices::dev.off()
+  }
 
   # reset device parameters
   graphics::par(op)
