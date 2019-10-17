@@ -67,25 +67,45 @@ make_bubbles <- function(n = 2, grain = 1000) {
 }
 
 
+#' Function factory for scico palettes
+#'
+#' @param ... arguments (besides n and alpha) to be passed to scico::scico
+#'
+#' @return a function that takes arguments n and alpha
+#' @export
+palette_scico <- function(...) {
+  function(n, alpha = NULL) scico::scico(n = n, alpha = alpha, ...)
+}
+
+#' Function factory viridis palettes
+#'
+#' @param ... arguments to be passed to viridis::viridis
+#'
+#' @return a function that takes arguments n and alpha
+#' @export
+palette_viridis <- function(...) {
+  function(n, alpha) viridis::viridis(n, alpha, ...)
+}
 
 
 
 #' Generate a tempest image
 #'
-#' @param file where to save the file (default: NULL)
+#' @param file path to tiff output file or NULL (the default) to display on screen
 #' @param seed data frame with x, y, id
 #' @param iterations how many times should we iterate the curl noise?
 #' @param burnin how many iterations should we discard as burnin?
 #' @param scale how large is each curl step?
 #' @param alpha_init how transparent is each line?
 #' @param alpha_decay how does transparency decay over iterations?
-#' @param width how wide are the lines?
+#' @param line_width how wide are the lines?
 #' @param box vector specifying the edges
 #' @param zoom rescale image to fit in the unit square?
 #' @param seed_col what colour to draw the seed? (default: NULL)
 #' @param seed_fill what colour to fill the seed? (default: NULL)
-#' @param palette function generating a palette (default: viridis)
-#' @param ... arguments to be passed to palette
+#' @param palette function generating a palette, or a list of such functions, with length equal to the number of objects in the seed
+#' @param width width in pixels (default = 3000, for printing try 8000)
+#' @param height height in pixels (default = 3000, for printing try 8000)
 #'
 #' @export
 tempest <- function(
@@ -96,21 +116,15 @@ tempest <- function(
   scale = .02, # size of the curl step
   alpha_init = .3, # transparency of each line
   alpha_decay = 0, # rate of decay
-  width = 6, # width of each line
+  line_width = 6, # width of each line
   box = NULL, # size of the box
   zoom = TRUE, # zoom in/out so that the final image fits in unit square
   seed_col = NULL,
   seed_fill = NULL,
-  palette = NULL, # function to generate palette (args: n, alpha, ...)
-  ... # options to pass to palette function
+  palette = palette_viridis(), # function to generate palette (args: n, alpha)
+  width = 3000, # width in pixels ()
+  height = 3000
 ) {
-
-  # default palette
-  if(is.null(palette)) {
-    palette <- function(n, alpha, ...) {
-      viridis::viridis(n, alpha, ...)
-    }
-  }
 
   # iterate each point through curl noise
   ribbon <- list()
@@ -125,6 +139,9 @@ tempest <- function(
       x = ribbon[[i]]$x,
       y = ribbon[[i]]$y
     )
+
+    # retain the id
+    ribbon[[i+1]]$id <- ribbon[[i]]$id
 
     # order the steps by their length
     ribbon[[i+1]]$z <- sqrt(ribbon[[i+1]]$x^2 + ribbon[[i+1]]$y^2)
@@ -158,9 +175,10 @@ tempest <- function(
   if(!is.null(file)) {
     grDevices::png(
       filename = file,
-      width = 4000,
-      height = 4000,
+      width = width,
+      height = height,
       bg = "black"
+      #compression = "lzw" # <- if tiff
     )
   }
 
@@ -172,20 +190,53 @@ tempest <- function(
   # plot a series of curl iterations
   for(i in 1:iterations) {
     if(i > burnin) {
-      # create a colour palette for this iteration
-      cols <- palette(nrow(seed), (alpha_init) * (1 - alpha_decay)^(i-1), ...)
 
-      # draw the segments
-      graphics::segments(
-        x0 = (ribbon[[i]]$x -xmin) / (xmax - xmin),
-        y0 = (ribbon[[i]]$y - ymin) / (ymax - ymin),
-        x1 = (ribbon[[i+1]]$x - xmin) / (xmax - xmin),
-        y1 = (ribbon[[i+1]]$y - ymin) / (ymax - ymin),
-        col = cols[ribbon[[i+1]]$z],
-        lwd = width,
-      )
+      # if palette is a single function...
+      if(class(palette) == "function") {
+
+        # create a colour palette for this iteration
+        cols <- palette(nrow(seed), (alpha_init) * (1 - alpha_decay)^(i-1))
+
+        # draw the segments
+        graphics::segments(
+          x0 = (ribbon[[i]]$x -xmin) / (xmax - xmin),
+          y0 = (ribbon[[i]]$y - ymin) / (ymax - ymin),
+          x1 = (ribbon[[i+1]]$x - xmin) / (xmax - xmin),
+          y1 = (ribbon[[i+1]]$y - ymin) / (ymax - ymin),
+          col = cols[ribbon[[i+1]]$z],
+          lwd = line_width,
+        )
+
+        # if it is a list of functions...
+      } else {
+
+        # create the list of colour palettes for this iteration
+        cols <- list();
+        for(j in 1:max(seed$id)) {
+          cols[[j]] <- palette[[j]](nrow(seed), (alpha_init) * (1 - alpha_decay)^(i-1))
+        }
+
+        # draw each object separately with its own palette
+        for(j in 1:max(seed$id)) {
+
+          # subest of points in the object
+          last_set <- dplyr::filter(ribbon[[i]], id == j)
+          next_set <- dplyr::filter(ribbon[[i+1]], id == j)
+
+          # draw the segments
+          graphics::segments(
+            x0 = (last_set$x -xmin) / (xmax - xmin),
+            y0 = (last_set$y - ymin) / (ymax - ymin),
+            x1 = (next_set$x - xmin) / (xmax - xmin),
+            y1 = (next_set$y - ymin) / (ymax - ymin),
+            col = cols[[j]][ribbon[[i+1]]$z],
+            lwd = line_width,
+          )
+        }
+      }
     }
   }
+
 
   # fill in the seed shape if requested
   if(!is.null(seed_fill)) {
@@ -208,7 +259,7 @@ tempest <- function(
         x = (s$x - xmin)/(xmax - xmin),
         y = (s$y - ymin)/(ymax - ymin),
         col = seed_col,
-        lwd= 10
+        lwd= line_width * 1.5
       )
     }
   }

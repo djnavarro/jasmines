@@ -6,11 +6,12 @@
 \usage{
 tempest(file = NULL, seed = make_sticks(), iterations = 6,
   burnin = 0, scale = 0.02, alpha_init = 0.3, alpha_decay = 0,
-  width = 6, box = NULL, zoom = TRUE, seed_col = NULL,
-  seed_fill = NULL, palette = NULL, ...)
+  line_width = 6, box = NULL, zoom = TRUE, seed_col = NULL,
+  seed_fill = NULL, palette = palette_viridis(), width = 3000,
+  height = 3000)
 }
 \arguments{
-\item{file}{where to save the file (default: NULL)}
+\item{file}{path to tiff output file or NULL (the default) to display on screen}
 
 \item{seed}{data frame with x, y, id}
 
@@ -24,7 +25,7 @@ tempest(file = NULL, seed = make_sticks(), iterations = 6,
 
 \item{alpha_decay}{how does transparency decay over iterations?}
 
-\item{width}{how wide are the lines?}
+\item{line_width}{how wide are the lines?}
 
 \item{box}{vector specifying the edges}
 
@@ -34,9 +35,11 @@ tempest(file = NULL, seed = make_sticks(), iterations = 6,
 
 \item{seed_fill}{what colour to fill the seed? (default: NULL)}
 
-\item{palette}{function generating a palette (default: viridis)}
+\item{palette}{function generating a palette, or a list of such functions, with length equal to the number of objects in the seed}
 
-\item{...}{arguments to be passed to palette}
+\item{width}{width in pixels (default = 3000, for printing try 8000)}
+
+\item{height}{height in pixels (default = 3000, for printing try 8000)}
 }
 \description{
 Generate a tempest image

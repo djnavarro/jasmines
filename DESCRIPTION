@@ -27,7 +27,8 @@ Imports:
     progress,
     magrittr,
     gganimate,
-    e1071
+    e1071,
+    magick
 URL: https://github.com/djnavarro/jasmines
 BugReports: https://github.com/djnavarro/jasmines/issues
 RoxygenNote: 6.1.1
