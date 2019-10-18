@@ -4,14 +4,14 @@
 \alias{meander}
 \title{Create meandering walk animation}
 \usage{
-meander(file = NULL, bridge = make_bridges(), wake_length = 0.1,
+meander(bridge = make_bridges(), file = NULL, wake_length = 0.1,
   palette = palette_scico(palette = "berlin"), background = "black",
   ...)
 }
 \arguments{
-\item{file}{where to save}
-
 \item{bridge}{tibble specifying the time series}
+
+\item{file}{where to save}
 
 \item{wake_length}{length of the tail}
 

@@ -4,14 +4,16 @@
 \alias{make_bridges}
 \title{Make smoothed brownian bridge time series}
 \usage{
-make_bridges(ntimes = 100, nseries = 20, smoothing = 6)
+make_bridges(seed = 20, length = 100, smoothing = 6, endpause = 0)
 }
 \arguments{
-\item{ntimes}{number of time points}
+\item{seed}{number of time series or complete seed as tibble}
 
-\item{nseries}{number of time series}
+\item{length}{number of time points in the time series}
 
 \item{smoothing}{number of smoothing iterations}
+
+\item{endpause}{length of pause at the end}
 }
 \value{
 tibble with columns series, time, x, y

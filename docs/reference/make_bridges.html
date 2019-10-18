@@ -114,22 +114,26 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>make_bridges</span>(<span class='kw'>ntimes</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>nseries</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>smoothing</span> <span class='kw'>=</span> <span class='fl'>6</span>)</pre>
+    <pre class="usage"><span class='fu'>make_bridges</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>length</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>smoothing</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>endpause</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ntimes</th>
-      <td><p>number of time points</p></td>
+      <th>seed</th>
+      <td><p>number of time series or complete seed as tibble</p></td>
     </tr>
     <tr>
-      <th>nseries</th>
-      <td><p>number of time series</p></td>
+      <th>length</th>
+      <td><p>number of time points in the time series</p></td>
     </tr>
     <tr>
       <th>smoothing</th>
       <td><p>number of smoothing iterations</p></td>
+    </tr>
+    <tr>
+      <th>endpause</th>
+      <td><p>length of pause at the end</p></td>
     </tr>
     </table>
     

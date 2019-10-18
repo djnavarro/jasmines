@@ -5,7 +5,7 @@
 #'
 #' @return a tibble
 #' @export
-make_dotted_message <- function(text) {
+make_dottext <- function(text) {
   char_map <- make_dotted_letters()
   char_map <- dplyr::filter(char_map, value == 1)
   char_set <- stringr::str_split(text, "", simplify = TRUE)
@@ -18,15 +18,15 @@ make_dotted_message <- function(text) {
       char_ind = as.numeric(char_ind),
       xpos = xpos + 6 * char_ind,
       series = 1:nrow(.)
+    ) %>%
+    dplyr::mutate(  # to match scale used in bridges
+      xpos = xpos/10,
+      ypos = ypos/10
     )
   return(dots)
 }
 
 
-#' Returns a tibble specifying letters as bitmaps
-#'
-#' @return tibble
-#' @export
 make_dotted_letters <-function() {
 
   # take a vector of inputs and return a binary
