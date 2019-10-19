@@ -1,31 +1,9 @@
 
 
-#' Function factory for scico palettes
-#'
-#' @param ... arguments (besides n and alpha) to be passed to scico::scico
-#'
-#' @return a function that takes arguments n and alpha
-#' @export
-palette_scico <- function(...) {
-  function(n, alpha = NULL) scico::scico(n = n, alpha = alpha, ...)
-}
-
-#' Function factory viridis palettes
-#'
-#' @param ... arguments to be passed to viridis::viridis
-#'
-#' @return a function that takes arguments n and alpha
-#' @export
-palette_viridis <- function(...) {
-  function(n, alpha) viridis::viridis(n, alpha, ...)
-}
-
-
-
 #' Generate a tempest image
 #'
-#' @param file path to tiff output file or NULL (the default) to display on screen
 #' @param seed data frame with x, y, id
+#' @param file path to tiff output file or NULL (the default) to display on screen
 #' @param iterations how many times should we iterate the curl noise?
 #' @param burnin how many iterations should we discard as burnin?
 #' @param scale how large is each curl step?
@@ -42,8 +20,8 @@ palette_viridis <- function(...) {
 #'
 #' @export
 tempest <- function(
-  file = NULL,
   seed = seed_sticks(), # seed points
+  file = NULL,
   iterations = 6, # how many iterations to curl?
   burnin = 0, # how many of the iterations do we not draw?
   scale = .02, # size of the curl step

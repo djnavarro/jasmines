@@ -1,5 +1,4 @@
 
-
 #' Seed shaped like a heart
 #'
 #' @param n number of dot points
@@ -45,7 +44,7 @@ seed_text <- function(text) {
 }
 
 
-#' Generate a random set of sticks
+#' Seed from a set of random sticks
 #'
 #' @param n how many sticks
 #' @param grain how many points along each stick
@@ -64,7 +63,7 @@ seed_sticks <- function(n = 10, grain = 1000) {
   return(points)
 }
 
-#' Generate an even set of rows
+#' Seed with evenly spaced rows
 #'
 #' @param n how many rows
 #' @param grain how many points along each row
@@ -85,7 +84,7 @@ seed_rows <- function(n = 10, grain = 1000) {
 
 
 
-#' Generate a random set of bubbles
+#' Seed with a random set of bubbles
 #'
 #' @param n how many bubbles
 #' @param grain how many points along each stick

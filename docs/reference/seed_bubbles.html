@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate a tempest image — tempest • jasmines</title>
+<title>Seed with a random set of bubbles — seed_bubbles • jasmines</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
 
 
-<meta property="og:title" content="Generate a tempest image — tempest" />
+<meta property="og:title" content="Seed with a random set of bubbles — seed_bubbles" />
 
-<meta property="og:description" content="Generate a tempest image" />
+<meta property="og:description" content="Seed with a random set of bubbles" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -103,87 +103,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate a tempest image</h1>
-    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/tempest.R'><code>R/tempest.R</code></a></small>
-    <div class="hidden name"><code>tempest.Rd</code></div>
+    <h1>Seed with a random set of bubbles</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/seeds.R'><code>R/seeds.R</code></a></small>
+    <div class="hidden name"><code>seed_bubbles.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Generate a tempest image</p>
+    <p>Seed with a random set of bubbles</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>tempest</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='seed_sticks.html'>seed_sticks</a></span>(), <span class='kw'>file</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>iterations</span> <span class='kw'>=</span> <span class='fl'>6</span>,
-  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.02</span>, <span class='kw'>alpha_init</span> <span class='kw'>=</span> <span class='fl'>0.3</span>, <span class='kw'>alpha_decay</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>line_width</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>box</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>seed_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>seed_fill</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='palette_viridis.html'>palette_viridis</a></span>(), <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>3000</span>,
-  <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>3000</span>)</pre>
+    <pre class="usage"><span class='fu'>seed_bubbles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>1000</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>seed</th>
-      <td><p>data frame with x, y, id</p></td>
+      <th>n</th>
+      <td><p>how many bubbles</p></td>
     </tr>
     <tr>
-      <th>file</th>
-      <td><p>path to tiff output file or NULL (the default) to display on screen</p></td>
-    </tr>
-    <tr>
-      <th>iterations</th>
-      <td><p>how many times should we iterate the curl noise?</p></td>
-    </tr>
-    <tr>
-      <th>burnin</th>
-      <td><p>how many iterations should we discard as burnin?</p></td>
-    </tr>
-    <tr>
-      <th>scale</th>
-      <td><p>how large is each curl step?</p></td>
-    </tr>
-    <tr>
-      <th>alpha_init</th>
-      <td><p>how transparent is each line?</p></td>
-    </tr>
-    <tr>
-      <th>alpha_decay</th>
-      <td><p>how does transparency decay over iterations?</p></td>
-    </tr>
-    <tr>
-      <th>line_width</th>
-      <td><p>how wide are the lines?</p></td>
-    </tr>
-    <tr>
-      <th>box</th>
-      <td><p>vector specifying the edges</p></td>
-    </tr>
-    <tr>
-      <th>zoom</th>
-      <td><p>rescale image to fit in the unit square?</p></td>
-    </tr>
-    <tr>
-      <th>seed_col</th>
-      <td><p>what colour to draw the seed? (default: NULL)</p></td>
-    </tr>
-    <tr>
-      <th>seed_fill</th>
-      <td><p>what colour to fill the seed? (default: NULL)</p></td>
-    </tr>
-    <tr>
-      <th>palette</th>
-      <td><p>function generating a palette, or a list of such functions, with length equal to the number of objects in the seed</p></td>
-    </tr>
-    <tr>
-      <th>width</th>
-      <td><p>width in pixels (default = 3000, for printing try 8000)</p></td>
-    </tr>
-    <tr>
-      <th>height</th>
-      <td><p>height in pixels (default = 3000, for printing try 8000)</p></td>
+      <th>grain</th>
+      <td><p>how many points along each stick</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a tibble with columns x, y and id</p>
     
 
   </div>
@@ -191,7 +139,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

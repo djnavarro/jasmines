@@ -4,16 +4,16 @@
 \alias{tempest}
 \title{Generate a tempest image}
 \usage{
-tempest(file = NULL, seed = seed_sticks(), iterations = 6,
+tempest(seed = seed_sticks(), file = NULL, iterations = 6,
   burnin = 0, scale = 0.02, alpha_init = 0.3, alpha_decay = 0,
   line_width = 6, box = NULL, zoom = TRUE, seed_col = NULL,
   seed_fill = NULL, palette = palette_viridis(), width = 3000,
   height = 3000)
 }
 \arguments{
-\item{file}{path to tiff output file or NULL (the default) to display on screen}
-
 \item{seed}{data frame with x, y, id}
+
+\item{file}{path to tiff output file or NULL (the default) to display on screen}
 
 \item{iterations}{how many times should we iterate the curl noise?}
 
