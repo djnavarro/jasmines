@@ -8,7 +8,7 @@ tempest(seed = seed_sticks(), file = NULL, iterations = 6,
   burnin = 0, scale = 0.02, alpha_init = 0.3, alpha_decay = 0,
   line_width = 6, box = NULL, zoom = TRUE, seed_col = NULL,
   seed_fill = NULL, palette = palette_viridis(), width = 3000,
-  height = 3000)
+  height = 3000, background = "black")
 }
 \arguments{
 \item{seed}{data frame with x, y, id}
@@ -40,6 +40,8 @@ tempest(seed = seed_sticks(), file = NULL, iterations = 6,
 \item{width}{width in pixels (default = 3000, for printing try 8000)}
 
 \item{height}{height in pixels (default = 3000, for printing try 8000)}
+
+\item{background}{colour of the background in the plot}
 }
 \description{
 Generate a tempest image

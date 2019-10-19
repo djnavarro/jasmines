@@ -17,6 +17,7 @@
 #' @param palette function generating a palette, or a list of such functions, with length equal to the number of objects in the seed
 #' @param width width in pixels (default = 3000, for printing try 8000)
 #' @param height height in pixels (default = 3000, for printing try 8000)
+#' @param background colour of the background in the plot
 #'
 #' @export
 tempest <- function(
@@ -34,7 +35,8 @@ tempest <- function(
   seed_fill = NULL,
   palette = palette_viridis(), # function to generate palette (args: n, alpha)
   width = 3000, # width in pixels ()
-  height = 3000
+  height = 3000,
+  background = "black"
 ) {
 
   # iterate each point through curl noise
@@ -94,7 +96,7 @@ tempest <- function(
   }
 
   # setup the plot
-  op <- graphics::par(bg = "black", pty = "s", mar = c(0,0,0,0))
+  op <- graphics::par(bg = background, pty = "s", mar = c(0,0,0,0))
   graphics::plot.new()
   graphics::plot.window(xlim = box[1:2], ylim = box[3:4])
 
