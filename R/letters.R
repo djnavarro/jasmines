@@ -1,32 +1,4 @@
 
-#' Make a message in dotted text
-#'
-#' @param text the message
-#'
-#' @return a tibble
-#' @export
-make_dottext <- function(text) {
-  char_map <- make_dotted_letters()
-  char_map <- dplyr::filter(char_map, value == 1)
-  char_set <- stringr::str_split(text, "", simplify = TRUE)
-  dots <- purrr::map_dfr(
-    .x = char_set,
-    .f = ~ dplyr::filter(char_map, char == .x),
-    .id = "char_ind"
-  ) %>%
-    dplyr::mutate(
-      char_ind = as.numeric(char_ind),
-      xpos = xpos + 6 * char_ind,
-      series = 1:nrow(.)
-    ) %>%
-    dplyr::mutate(  # to match scale used in bridges
-      xpos = xpos/10,
-      ypos = ypos/10
-    )
-  return(dots)
-}
-
-
 make_dotted_letters <-function() {
 
   # take a vector of inputs and return a binary
@@ -981,9 +953,9 @@ make_dotted_letters <-function() {
   char_table <- char_list %>%
     purrr::imap_dfr(function(x,n) {
       x %>% tibble::as_tibble() %>%
-        dplyr::mutate(ypos = 9:1) %>%
+        dplyr::mutate(y = 9:1) %>%
         tidyr::gather(key = "xpos", value = "value", V1, V2, V3, V4, V5, V6) %>%
-        dplyr::mutate(xpos = xpos %>% stringr::str_remove("V") %>% as.integer()) %>%
+        dplyr::mutate(x = x %>% stringr::str_remove("V") %>% as.integer()) %>%
         dplyr::mutate(char = n)
     })
 

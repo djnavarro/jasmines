@@ -27,7 +27,7 @@ meander <- function(
 
   # read off the parameters
   ntimes <- max(bridge$time)
-  nseries <- max(bridge$series)
+  nseries <- max(bridge$id)
 
   # gganimate
   pic <- ggplot2::ggplot(
@@ -35,7 +35,7 @@ meander <- function(
     mapping = ggplot2::aes(
       x = x,
       y = y,
-      colour = factor(series)
+      colour = factor(id)
     )
   ) +
     ggplot2::geom_point(
@@ -100,7 +100,7 @@ make_bridges <- function(
     # each of the series
   } else {
     nseries <- nrow(seed)
-    seed$series <- 1:nseries
+    seed$id <- 1:nseries
     shift <- TRUE
   }
 
@@ -126,11 +126,14 @@ make_bridges <- function(
 
   # generate the base walks...
   walks <- tibble::tibble(
-    series = unclass(gl(nseries, length)),
+    id = unclass(gl(nseries, length)),
     time = rep(1:length, nseries),
     x = smooth_walks(nseries, smoothing),
     y = smooth_walks(nseries, smoothing)
   )
+
+  # rename variables in the seed
+  seed <- dplyr::rename(seed, xpos = x, ypos = y)
 
   # offset all the series using the seed if requested...
   if(shift) {

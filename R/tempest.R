@@ -1,71 +1,4 @@
 
-#' Generate a random set of sticks
-#'
-#' @param n how many sticks
-#' @param grain how many points along each stick
-#'
-#' @return a tibble with columns x, y and id
-#' @export
-make_sticks <- function(n = 10, grain = 1000) {
-  make_stick <- function(id, grain) {
-    return(tibble::tibble(
-      x = seq(stats::runif(1), stats::runif(1), length.out = grain),
-      y = seq(stats::runif(1), stats::runif(1), length.out = grain),
-      id = id
-    ))
-  }
-  points <- purrr::map_dfr(1:n, make_stick, grain = grain)
-  return(points)
-}
-
-#' Generate an even set of rows
-#'
-#' @param n how many rows
-#' @param grain how many points along each row
-#'
-#' @return a tibble with columns x, y and id
-#' @export
-make_rows <- function(n = 10, grain = 1000) {
-  make_row <- function(id, grain) {
-    return(tibble::tibble(
-      x = seq(0, 1, length.out = grain),
-      y = id/(n+1),
-      id = id
-    ))
-  }
-  points <- purrr::map_dfr(1:n, make_row, grain = grain)
-  return(points)
-}
-
-
-
-#' Generate a random set of bubbles
-#'
-#' @param n how many bubbles
-#' @param grain how many points along each stick
-#'
-#' @return a tibble with columns x, y and id
-#' @export
-make_bubbles <- function(n = 2, grain = 1000) {
-
-  make_bubble <- function(id, grain) {
-
-    radius <- stats::runif(1)
-    origin_x <- stats::runif(1)
-    origin_y <- stats::runif(1)
-    th <- seq(0, 2*pi, length.out = grain)
-
-    return(tibble::tibble(
-      x = radius * cos(th) + origin_x,
-      y = radius * sin(th) + origin_y,
-      id = id
-    ))
-  }
-
-  points <- purrr::map_dfr(1:n, make_bubble, grain = grain)
-  return(points)
-}
-
 
 #' Function factory for scico palettes
 #'
@@ -110,7 +43,7 @@ palette_viridis <- function(...) {
 #' @export
 tempest <- function(
   file = NULL,
-  seed = make_sticks(), # seed points
+  seed = seed_sticks(), # seed points
   iterations = 6, # how many iterations to curl?
   burnin = 0, # how many of the iterations do we not draw?
   scale = .02, # size of the curl step
