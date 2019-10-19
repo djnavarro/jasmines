@@ -58,11 +58,9 @@ make_bridges <- function(
     y = smooth_walks(nseries, smoothing)
   )
 
-  # rename variables in the seed
-  seed <- dplyr::rename(seed, xpos = x, ypos = y)
-
   # offset all the series using the seed if requested...
   if(shift) {
+    seed <- dplyr::rename(seed, xpos = x, ypos = y)
     walks <- walks %>%
       dplyr::full_join(seed) %>%
       dplyr::mutate(x = x + xpos, y = y + ypos)
