@@ -954,7 +954,7 @@ make_dotted_letters <-function() {
     purrr::imap_dfr(function(x,n) {
       x %>% tibble::as_tibble() %>%
         dplyr::mutate(y = 9:1) %>%
-        tidyr::gather(key = "xpos", value = "value", V1, V2, V3, V4, V5, V6) %>%
+        tidyr::gather(key = "x", value = "value", V1, V2, V3, V4, V5, V6) %>%
         dplyr::mutate(x = x %>% stringr::str_remove("V") %>% as.integer()) %>%
         dplyr::mutate(char = n)
     })
