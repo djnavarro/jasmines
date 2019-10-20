@@ -83,6 +83,11 @@ style_ribbon <- function(
         # create a colour palette for this iteration
         cols <- palette(nrow(seed), (alpha_init) * (1 - alpha_decay)^(i-1))
 
+        # supply a default order if the input lacks one
+        if(!("order" %in% names(this))) {
+          this$order <- 1:length(this$x)
+        }
+
         # draw the segments
         graphics::segments(
           x0 = (last$x - xmin) / (xmax - xmin),
@@ -107,6 +112,11 @@ style_ribbon <- function(
 
           last <- ribbon %>% dplyr::filter(time == i & id == j)
           this <- ribbon %>% dplyr::filter(time == i+1 & id == j)
+
+          # supply a default order if the input lacks one
+          if(!("order" %in% names(this))) {
+            this$order <- 1:length(this$x)
+          }
 
           # draw the segments
           graphics::segments(
