@@ -9,8 +9,8 @@
 #' @param ... other arguments to pass to shadow_wake
 #'
 #' @export
-meander <- function(
-  bridge = make_bridges(),
+style_walk <- function(
+  bridge = meander(),
   file = NULL,
   wake_length = .1,
   palette = palette_scico(palette="berlin"),

@@ -39,7 +39,8 @@ seed_text <- function(text) {
     dplyr::mutate(  # to match scale used in bridges
       x = x/10,
       y = y/10
-    )
+    ) %>%
+    dplyr::select(char, char_ind, x, y, id)
   return(dots)
 }
 

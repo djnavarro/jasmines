@@ -8,7 +8,7 @@
 #'
 #' @return tibble with columns series, time, x, y
 #' @export
-make_bridges <- function(
+meander <- function(
   seed = 20,
   length = 100,
   smoothing = 6,
@@ -60,10 +60,10 @@ make_bridges <- function(
 
   # offset all the series using the seed if requested...
   if(shift) {
-    seed <- dplyr::rename(seed, xpos = x, ypos = y)
+    seed <- dplyr::rename(seed, seed_x = x, seed_y = y)
     walks <- walks %>%
       dplyr::full_join(seed) %>%
-      dplyr::mutate(x = x + xpos, y = y + ypos)
+      dplyr::mutate(x = x + seed_x, y = y + seed_y)
   }
 
   # add copies of the final frame if requested...
