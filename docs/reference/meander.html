@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create meandering walk animation — meander • jasmines</title>
+<title>Make smoothed brownian bridge time series — meander • jasmines</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
 
 
-<meta property="og:title" content="Create meandering walk animation — meander" />
+<meta property="og:title" content="Make smoothed brownian bridge time series — meander" />
 
-<meta property="og:description" content="Create meandering walk animation" />
+<meta property="og:description" content="Make smoothed brownian bridge time series" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -103,49 +103,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create meandering walk animation</h1>
-    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/meander.R'><code>R/meander.R</code></a></small>
+    <h1>Make smoothed brownian bridge time series</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/bridges.R'><code>R/bridges.R</code></a></small>
     <div class="hidden name"><code>meander.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create meandering walk animation</p>
+    <p>Make smoothed brownian bridge time series</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>meander</span>(<span class='kw'>bridge</span> <span class='kw'>=</span> <span class='fu'><a href='make_bridges.html'>make_bridges</a></span>(), <span class='kw'>file</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>wake_length</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='palette_scico.html'>palette_scico</a></span>(<span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"berlin"</span>), <span class='kw'>background</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
-  <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>meander</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>length</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>smoothing</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>endpause</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>bridge</th>
-      <td><p>tibble specifying the time series</p></td>
+      <th>seed</th>
+      <td><p>number of time series or complete seed as tibble</p></td>
     </tr>
     <tr>
-      <th>file</th>
-      <td><p>where to save</p></td>
+      <th>length</th>
+      <td><p>number of time points in the time series</p></td>
     </tr>
     <tr>
-      <th>wake_length</th>
-      <td><p>length of the tail</p></td>
+      <th>smoothing</th>
+      <td><p>number of smoothing iterations</p></td>
     </tr>
     <tr>
-      <th>palette</th>
-      <td><p>function generating palette values</p></td>
-    </tr>
-    <tr>
-      <th>background</th>
-      <td><p>colour of the background</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>other arguments to pass to shadow_wake</p></td>
+      <th>endpause</th>
+      <td><p>length of pause at the end</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>tibble with columns series, time, x, y</p>
     
 
   </div>
@@ -153,7 +147,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Swirl — swirl • jasmines</title>
+<title>Create meandering walk animation — style_walk • jasmines</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
 
 
-<meta property="og:title" content="Swirl — swirl" />
+<meta property="og:title" content="Create meandering walk animation — style_walk" />
 
-<meta property="og:description" content="Swirl" />
+<meta property="og:description" content="Create meandering walk animation" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -103,33 +103,47 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Swirl</h1>
-    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/swirl.R'><code>R/swirl.R</code></a></small>
-    <div class="hidden name"><code>swirl.Rd</code></div>
+    <h1>Create meandering walk animation</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/meander.R'><code>R/meander.R</code></a></small>
+    <div class="hidden name"><code>style_walk.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Swirl</p>
+    <p>Create meandering walk animation</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>swirl</span>(<span class='kw'>bridge</span> <span class='kw'>=</span> <span class='fu'>make_bridges</span>(<span class='fl'>50</span>, <span class='fl'>50</span>), <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.02</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"line"</span>)</pre>
+    <pre class="usage"><span class='fu'>style_walk</span>(<span class='kw'>bridge</span> <span class='kw'>=</span> <span class='fu'><a href='meander.html'>meander</a></span>(), <span class='kw'>file</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>wake_length</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
+  <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='palette_scico.html'>palette_scico</a></span>(<span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"berlin"</span>), <span class='kw'>background</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
+  <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>bridge</th>
-      <td><p>bridge tibble</p></td>
+      <td><p>tibble specifying the time series</p></td>
     </tr>
     <tr>
-      <th>scale</th>
-      <td><p>length of swirl</p></td>
+      <th>file</th>
+      <td><p>where to save</p></td>
     </tr>
     <tr>
-      <th>type</th>
-      <td><p>plot type (line, point, barbell)</p></td>
+      <th>wake_length</th>
+      <td><p>length of the tail</p></td>
+    </tr>
+    <tr>
+      <th>palette</th>
+      <td><p>function generating palette values</p></td>
+    </tr>
+    <tr>
+      <th>background</th>
+      <td><p>colour of the background</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>other arguments to pass to shadow_wake</p></td>
     </tr>
     </table>
     

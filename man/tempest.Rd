@@ -2,47 +2,20 @@
 % Please edit documentation in R/tempest.R
 \name{tempest}
 \alias{tempest}
-\title{Generate a tempest image}
+\title{Generate a tempest object}
 \usage{
-tempest(seed = seed_sticks(), file = NULL, iterations = 6,
-  burnin = 0, scale = 0.02, alpha_init = 0.3, alpha_decay = 0,
-  line_width = 6, box = NULL, zoom = TRUE, seed_col = NULL,
-  seed_fill = NULL, palette = palette_viridis(), width = 3000,
-  height = 3000, background = "black")
+tempest(seed = seed_sticks(), iterations = 6, scale = 0.02)
 }
 \arguments{
 \item{seed}{data frame with x, y, id}
 
-\item{file}{path to tiff output file or NULL (the default) to display on screen}
-
 \item{iterations}{how many times should we iterate the curl noise?}
 
-\item{burnin}{how many iterations should we discard as burnin?}
-
 \item{scale}{how large is each curl step?}
-
-\item{alpha_init}{how transparent is each line?}
-
-\item{alpha_decay}{how does transparency decay over iterations?}
-
-\item{line_width}{how wide are the lines?}
-
-\item{box}{vector specifying the edges}
-
-\item{zoom}{rescale image to fit in the unit square?}
-
-\item{seed_col}{what colour to draw the seed? (default: NULL)}
-
-\item{seed_fill}{what colour to fill the seed? (default: NULL)}
-
-\item{palette}{function generating a palette, or a list of such functions, with length equal to the number of objects in the seed}
-
-\item{width}{width in pixels (default = 3000, for printing try 8000)}
-
-\item{height}{height in pixels (default = 3000, for printing try 8000)}
-
-\item{background}{colour of the background in the plot}
+}
+\value{
+a "tempest" ribbon, data frame with x, y, order, time and id
 }
 \description{
-Generate a tempest image
+Generate a tempest object
 }
