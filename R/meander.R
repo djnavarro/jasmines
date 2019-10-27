@@ -1,74 +1,82 @@
 
-#' Create meandering walk animation
+#' Make smoothed brownian bridge time series
 #'
-#' @param bridge tibble specifying the time series
-#' @param file where to save
-#' @param wake_length length of the tail
-#' @param palette function generating palette values
-#' @param background colour of the background
-#' @param ... other arguments to pass to shadow_wake
+#' @param seed number of time series or complete seed as tibble
+#' @param length number of time points in the time series
+#' @param smoothing number of smoothing iterations
+#' @param endpause length of pause at the end
 #'
+#' @return tibble with columns series, time, x, y
 #' @export
-style_walk <- function(
-  bridge = meander(),
-  file = NULL,
-  wake_length = .1,
-  palette = palette_scico(palette="berlin"),
-  background = "black",
-  ...
+meander <- function(
+  seed = 20,
+  length = 100,
+  smoothing = 6,
+  endpause = 0
 ) {
 
-  # scale the series so that x and y are between -1 and 1
-  bridge <- bridge %>%
-    dplyr::mutate(
-      x = x / max(abs(x), abs(y)),
-      y = y / max(abs(x), abs(y))
-    )
+  # if seed is an number, interpret it as the number of
+  # time series to generate, and do not shift the data
+  if(base::length(seed) == 1 & is.numeric(seed)) {
+    nseries <- seed
+    shift <- FALSE
 
-  # read off the parameters
-  ntimes <- max(bridge$time)
-  nseries <- max(bridge$id)
-
-  # gganimate
-  pic <- ggplot2::ggplot(
-    data = bridge,
-    mapping = ggplot2::aes(
-      x = x,
-      y = y,
-      colour = factor(id)
-    )
-  ) +
-    ggplot2::geom_point(
-      show.legend = FALSE,
-      size = 3,
-      alpha = .6
-    ) +
-    theme_mono(background) +
-    ggplot2::scale_color_manual(values = palette(nseries, alpha = .6)) +
-    gganimate::transition_time(time = time)  +
-    gganimate::ease_aes('linear') +
-    gganimate::shadow_wake(wake_length = wake_length, ...)
-
-  # just in case
-  op <- graphics::par(bg = background)
-
-  # create
-  if(!is.null(file)) {
-    pic %>% gganimate::animate(
-      nframes = 200,
-      detail = 5,
-      type = "cairo"
-    )
-    gganimate::anim_save(file)
+    # alternatively, seed should be a data frame with two
+    # columns, xpos and ypos, indicating the offset for
+    # each of the series
   } else {
-    graphics::par(op)
-    return(pic)
+    nseries <- nrow(seed)
+    seed$id <- 1:nseries
+    shift <- TRUE
   }
 
-  graphics::par(op)
+  # for convenience
+  lag <- function(x) dplyr::lag(x, default = 0)
+  lead <- function(x) dplyr::lead(x, default = 0)
 
+  # locally smoothed brownian bridge
+  smooth_walk <- function(n = 0) {
+    w <- c(0, e1071::rbridge(1, length-3))
+    while(n > 0) {
+      w <- (lag(w) + w + lead(w))/3
+      n <- n - 1
+    }
+    w <- c(0, w, 0)
+    return(w)
+  }
 
-  # invisibly return the tibble
-  return(invisible(bridge))
+  # generate multiple smoothed walks
+  smooth_walks <- function(nseries, nsmooth) {
+    replicate(nseries, smooth_walk(nsmooth)) %>% as.vector()
+  }
+
+  # generate the base walks...
+  walks <- tibble::tibble(
+    id = unclass(gl(nseries, length)),
+    time = rep(1:length, nseries),
+    x = smooth_walks(nseries, smoothing),
+    y = smooth_walks(nseries, smoothing)
+  )
+
+  # offset all the series using the seed if requested...
+  if(shift) {
+    seed <- dplyr::rename(seed, seed_x = x, seed_y = y)
+    walks <- walks %>%
+      dplyr::full_join(seed) %>%
+      dplyr::mutate(x = x + seed_x, y = y + seed_y)
+  }
+
+  # add copies of the final frame if requested...
+  if(endpause > 0) {
+    endpoint <- walks %>% dplyr::filter(time == length)
+    pausemap <- purrr::map_dfr(
+      .x = (length + 1):(length + endpause),
+      .f = ~ dplyr::mutate(endpoint, time = .x)
+    )
+    walks <- dplyr::bind_rows(walks, pausemap)
+  }
+
+  # return
+  return(walks)
 }
 
