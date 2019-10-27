@@ -1,4 +1,4 @@
-#' Save to file
+#' Export image to a file
 #'
 #' @param input art object to print
 #' @param filename filename
@@ -7,7 +7,7 @@
 #' @param dpi defaults to 300dpi
 #'
 #' @export
-art_write <- function(
+export_image <- function(
   input,
   filename,
   width = 10,
@@ -20,28 +20,30 @@ art_write <- function(
     dpi = dpi
   )
 }
-#
-#
-# ### if the input is a ggplot 2 object
-#
-#   # create the png if requested
-#   if(!is.null(file)) {
-#
-#   }
-#
-#
-# ## if it's gganimate
-#
-# # just in case
-# op <- graphics::par(bg = background)
-#
-# # create
-# if(!is.null(file)) {
-#   pic %>% gganimate::animate(
-#     nframes = 200,
-#     detail = 5,
-#     type = "cairo"
-#   )
-#   gganimate::anim_save(file)
-#   graphics::par(op)
-#
+
+
+#' Export animation to a file
+#'
+#' @param input art object to print
+#' @param filename filename
+#' @param nframes defaults to 200
+#' @param detail number of interpolated frames, defaults to 5
+#' @param type defaults to "cairo"
+#'
+#' @export
+export_animation <- function(
+  input,
+  filename,
+  nframes = 200,
+  detail = 5,
+  type = "cairo"
+) {
+  input %>% gganimate::animate(
+    nframes = nframes,
+    detail = detail,
+    type = type
+  )
+  gganimate::anim_save(filename)
+  }
+
+

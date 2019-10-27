@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • jasmines</title>
+<title>Export animation to a file — export_animation • jasmines</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Export animation to a file — export_animation" />
+
+<meta property="og:description" content="Export animation to a file" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -50,7 +53,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -98,138 +101,55 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Export animation to a file</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/save.R'><code>R/save.R</code></a></small>
+    <div class="hidden name"><code>export_animation.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Export animation to a file</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="coil.html">coil()</a></code> </p>
-        </td>
-        <td><p>Coil</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="collage.html">collage()</a></code> </p>
-        </td>
-        <td><p>Creates a collage of noise samples</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="export_animation.html">export_animation()</a></code> </p>
-        </td>
-        <td><p>Export animation to a file</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="export_image.html">export_image()</a></code> </p>
-        </td>
-        <td><p>Export image to a file</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="meander.html">meander()</a></code> </p>
-        </td>
-        <td><p>Make smoothed brownian bridge time series</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="palette_scico.html">palette_scico()</a></code> </p>
-        </td>
-        <td><p>Function factory for scico palettes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="palette_viridis.html">palette_viridis()</a></code> </p>
-        </td>
-        <td><p>Function factory viridis palettes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="seed_bubbles.html">seed_bubbles()</a></code> </p>
-        </td>
-        <td><p>Seed with a random set of bubbles</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="seed_heart.html">seed_heart()</a></code> </p>
-        </td>
-        <td><p>Seed shaped like a heart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="seed_rows.html">seed_rows()</a></code> </p>
-        </td>
-        <td><p>Seed with evenly spaced rows</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="seed_sticks.html">seed_sticks()</a></code> </p>
-        </td>
-        <td><p>Seed from a set of random sticks</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="seed_text.html">seed_text()</a></code> </p>
-        </td>
-        <td><p>Seed shaped from text</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="style_ribbon.html">style_ribbon()</a></code> </p>
-        </td>
-        <td><p>Style as a ribbon image</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="style_walk.html">style_walk()</a></code> </p>
-        </td>
-        <td><p>Style as animated points</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="style_wrap.html">style_wrap()</a></code> </p>
-        </td>
-        <td><p>Style as a wrap image</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tempest.html">tempest()</a></code> </p>
-        </td>
-        <td><p>Generate a tempest object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="theme_mono.html">theme_mono()</a></code> </p>
-        </td>
-        <td><p>Theme that supplies a background colour only</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>export_animation</span>(<span class='no'>input</span>, <span class='no'>filename</span>, <span class='kw'>nframes</span> <span class='kw'>=</span> <span class='fl'>200</span>, <span class='kw'>detail</span> <span class='kw'>=</span> <span class='fl'>5</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"cairo"</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>input</th>
+      <td><p>art object to print</p></td>
+    </tr>
+    <tr>
+      <th>filename</th>
+      <td><p>filename</p></td>
+    </tr>
+    <tr>
+      <th>nframes</th>
+      <td><p>defaults to 200</p></td>
+    </tr>
+    <tr>
+      <th>detail</th>
+      <td><p>number of interpolated frames, defaults to 5</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>defaults to "cairo"</p></td>
+    </tr>
     </table>
-  </div>
+    
 
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+                </ul>
+
   </div>
 </div>
 
