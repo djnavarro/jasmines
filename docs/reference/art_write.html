@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Style as a ribbon image — style_ribbon • jasmines</title>
+<title>Save to file — art_write • jasmines</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
 
 
-<meta property="og:title" content="Style as a ribbon image — style_ribbon" />
+<meta property="og:title" content="Save to file — art_write" />
 
-<meta property="og:description" content="Style as a ribbon image" />
+<meta property="og:description" content="Save to file" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -103,61 +103,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Style as a ribbon image</h1>
-    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/style_ribbon.R'><code>R/style_ribbon.R</code></a></small>
-    <div class="hidden name"><code>style_ribbon.Rd</code></div>
+    <h1>Save to file</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/save.R'><code>R/save.R</code></a></small>
+    <div class="hidden name"><code>art_write.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Style as a ribbon image</p>
+    <p>Save to file</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>style_ribbon</span>(<span class='no'>data</span>, <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>alpha_init</span> <span class='kw'>=</span> <span class='fl'>0.3</span>, <span class='kw'>alpha_decay</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>seed_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>seed_fill</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='palette_viridis.html'>palette_viridis</a></span>(),
-  <span class='kw'>background</span> <span class='kw'>=</span> <span class='st'>"black"</span>)</pre>
+    <pre class="usage"><span class='fu'>art_write</span>(<span class='no'>input</span>, <span class='no'>filename</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>dpi</span> <span class='kw'>=</span> <span class='fl'>300</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>data frame with x, y, order, id, time</p></td>
+      <th>input</th>
+      <td><p>art object to print</p></td>
     </tr>
     <tr>
-      <th>burnin</th>
-      <td><p>how many iterations should we discard as burnin?</p></td>
+      <th>filename</th>
+      <td><p>filename</p></td>
     </tr>
     <tr>
-      <th>alpha_init</th>
-      <td><p>how transparent is each line?</p></td>
+      <th>width</th>
+      <td><p>defaults to 3000 pixels (10in at 300dpi)</p></td>
     </tr>
     <tr>
-      <th>alpha_decay</th>
-      <td><p>how does transparency decay over iterations?</p></td>
+      <th>height</th>
+      <td><p>defaults to 3000 pixels (10in at 300dpi)</p></td>
     </tr>
     <tr>
-      <th>seed_col</th>
-      <td><p>what colour to draw the seed? (default: NULL)</p></td>
-    </tr>
-    <tr>
-      <th>seed_fill</th>
-      <td><p>what colour to fill the seed? (default: NULL)</p></td>
-    </tr>
-    <tr>
-      <th>palette</th>
-      <td><p>function generating a palette</p></td>
-    </tr>
-    <tr>
-      <th>background</th>
-      <td><p>colour of the background in the plot</p></td>
+      <th>dpi</th>
+      <td><p>defaults to 300dpi</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Returns a ggplot2 object</p>
     
 
   </div>
@@ -165,9 +147,7 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

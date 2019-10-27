@@ -1,38 +1,29 @@
 
-#' Draw a ribbon image
+#' Style as a ribbon image
 #'
-#' @param ribbon data frame with x, y, order, id, time
-#' @param file path to tiff output file or NULL (the default) to display on screen
+#' @param data data frame with x, y, order, id, time
 #' @param burnin how many iterations should we discard as burnin?
 #' @param alpha_init how transparent is each line?
 #' @param alpha_decay how does transparency decay over iterations?
-#' @param line_width how wide are the lines?
 #' @param seed_col what colour to draw the seed? (default: NULL)
 #' @param seed_fill what colour to fill the seed? (default: NULL)
-#' @param palette function generating a palette, or a list of such functions, with length equal to the number of objects in the seed
-#' @param width width in pixels (default = 3000, for printing try 8000)
-#' @param height height in pixels (default = 3000, for printing try 8000)
+#' @param palette function generating a palette
 #' @param background colour of the background in the plot
 #'
+#' @return Returns a ggplot2 object
 #' @export
 style_ribbon <- function(
-  ribbon,
-  file = NULL,
+  data,
   burnin = 0,      # how many of the iterations do we not draw?
   alpha_init = .3, # transparency of each line
   alpha_decay = 0, # rate of decay
-  line_width = 6, # width of each line
   seed_col = NULL,
   seed_fill = NULL,
   palette = palette_viridis(), # function to generate palette (args: n, alpha)
-  width = 3000, # width in pixels ()
-  height = 3000,
   background = "black"
 ) {
 
-  # the seed is the first element of
-  seed <- ribbon %>% dplyr::filter(time == 1)
-  iterations <- max(ribbon$time) - 1
+  ribbon <- data
 
   # min, max
   xmin <- min(ribbon$x)
@@ -51,29 +42,106 @@ style_ribbon <- function(
     dplyr::mutate(
       x = (x - xmin) / (xmax - xmin),
       y = (y - ymin) / (ymax - ymin),
-      al = alpha_init +  (1 - alpha_decay)^(time - 1)
+      al = alpha_init * (1 - alpha_decay)^(time - 1)
     )
+
+  # the seed is the first element of the ribbon
+  seed <- ribbon %>% dplyr::filter(time == 1)
+
+  ribbon2 <- ribbon %>%
+    dplyr::rename(xend = x, yend = y) %>%
+    dplyr::mutate(time = time - 1) %>%
+    dplyr::filter(time > 0)
+
+  ribbon <- ribbon %>%
+    dplyr::filter(time < max(time))
+
+  ribbon$xend <- ribbon2$xend
+  ribbon$yend <- ribbon2$yend
+  ribbon$order <- ribbon2$order
+
+  #return(ribbon)
 
   # get colour values
   col_set <- palette(n = max(ribbon$order))
 
   # create basic object
   pic <- ggplot2::ggplot(
-    data = ribbon,
+    data = ribbon %>% dplyr::filter(time > burnin),
     mapping = ggplot2::aes(
       x = x,
       y = y,
+      xend = xend,
+      yend = yend,
       alpha = al,
-      group = id,
       colour = factor(order)
     )
   ) +
-    ggplot2::geom_line(show.legend = FALSE) +
+    ggplot2::geom_segment(show.legend = FALSE) +
     ggplot2::scale_color_manual(values = col_set) +
-    theme_mono(background)
+    ggplot2::scale_alpha_identity() +
+    theme_mono(background) +
+    ggplot2::coord_equal(
+      xlim = c(-.05, 1.05),
+      ylim = c(-.05, 1.05)
+    )
+
+  # add hollow fill for seed if requested
+  if(!is.null(seed_fill)) {
+    pic <- pic +
+      ggplot2::geom_polygon(
+        data = seed,
+        mapping = ggplot2::aes(x = x, y = y, group = factor(id)),
+        inherit.aes = FALSE,
+        colour = seed_fill,
+        fill = seed_fill,
+        show.legend = FALSE)
+  }
+
+  # add outline for seed if requested
+  if(!is.null(seed_col)) {
+    pic <- pic +
+      ggplot2::geom_path(
+        data = seed,
+        mapping = ggplot2::aes(x = x, y = y, group = factor(id)),
+        inherit.aes = FALSE,
+        colour = seed_col,
+        show.legend = FALSE)
+  }
+
 
   return(pic)
 }
+
+
+#   # fill in the seed shape if requested
+#   if(!is.null(seed_fill)) {
+#     for(i in 1:max(seed$id)) {
+#       s <- seed[seed$id == i,]
+#       graphics::polygon(
+#         x = (s$x - xmin)/(xmax - xmin),
+#         y = (s$y - ymin)/(ymax - ymin),
+#         col = seed_fill,
+#         lwd= 1
+#       )
+#     }
+#   }
+#
+#   # draw outline of seed shape if requested
+#   if(!is.null(seed_col)) {
+#     for(i in 1:max(seed$id)) {
+#       s <- seed[seed$id == i,]
+#       graphics::lines(
+#         x = (s$x - xmin)/(xmax - xmin),
+#         y = (s$y - ymin)/(ymax - ymin),
+#         col = seed_col,
+#         lwd= line_width * 1.5
+#       )
+#     }
+#   }
+# }
+
+
 
 # }
 #
@@ -155,29 +223,3 @@ style_ribbon <- function(
 #   }
 #
 #
-#   # fill in the seed shape if requested
-#   if(!is.null(seed_fill)) {
-#     for(i in 1:max(seed$id)) {
-#       s <- seed[seed$id == i,]
-#       graphics::polygon(
-#         x = (s$x - xmin)/(xmax - xmin),
-#         y = (s$y - ymin)/(ymax - ymin),
-#         col = seed_fill,
-#         lwd= 1
-#       )
-#     }
-#   }
-#
-#   # draw outline of seed shape if requested
-#   if(!is.null(seed_col)) {
-#     for(i in 1:max(seed$id)) {
-#       s <- seed[seed$id == i,]
-#       graphics::lines(
-#         x = (s$x - xmin)/(xmax - xmin),
-#         y = (s$y - ymin)/(ymax - ymin),
-#         col = seed_col,
-#         lwd= line_width * 1.5
-#       )
-#     }
-#   }
-# }

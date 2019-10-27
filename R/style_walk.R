@@ -1,5 +1,5 @@
 
-#' Render the input as animated points
+#' Style as animated points
 #'
 #' @param data tibble specifying the time series
 #' @param wake_length length of the tail
@@ -51,7 +51,5 @@ style_walk <- function(
     gganimate::shadow_wake(wake_length = wake_length, ...)
 
   return(pic)
-
-
 }
 

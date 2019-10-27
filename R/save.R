@@ -1,10 +1,10 @@
 #' Save to file
 #'
 #' @param input art object to print
-#' @param file filename
-#' @param background defaults to black
-#' @param width defaults to 3000 pixels
-#' @param height defaults to 3000 pixels
+#' @param filename filename
+#' @param width defaults to 3000 pixels (10in at 300dpi)
+#' @param height defaults to 3000 pixels (10in at 300dpi)
+#' @param dpi defaults to 300dpi
 #'
 #' @export
 art_write <- function(
