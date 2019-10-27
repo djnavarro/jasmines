@@ -111,3 +111,10 @@ seed_bubbles <- function(n = 2, grain = 1000) {
   points <- purrr::map_dfr(1:n, make_bubble, grain = grain)
   return(points)
 }
+
+
+
+
+
+
+
