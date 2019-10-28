@@ -1,7 +1,7 @@
 Package: jasmines
 Title: Generative Art
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R:
     person(given = "Danielle",
            family = "Navarro",
            role = c("aut", "cre"),
@@ -11,7 +11,7 @@ Description: It doesn't do much, really.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: 
+Imports:
     ambient,
     purrr,
     dplyr,
@@ -28,11 +28,12 @@ Imports:
     magrittr,
     gganimate,
     e1071,
-    magick
+    magick,
+    imager
 URL: https://github.com/djnavarro/jasmines
 BugReports: https://github.com/djnavarro/jasmines/issues
 RoxygenNote: 6.1.1
-Suggests: 
+Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
