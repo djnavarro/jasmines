@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coil — coil • jasmines</title>
+<title>Transform a temporal object by time reversing it — time_reverse • jasmines</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
 
 
-<meta property="og:title" content="Coil — coil" />
+<meta property="og:title" content="Transform a temporal object by time reversing it — time_reverse" />
 
-<meta property="og:description" content="Coil" />
+<meta property="og:description" content="Transform a temporal object by time reversing it" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -103,31 +103,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coil</h1>
-    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/transform_coil.R'><code>R/transform_coil.R</code></a></small>
-    <div class="hidden name"><code>coil.Rd</code></div>
+    <h1>Transform a temporal object by time reversing it</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/transform_reverse.R'><code>R/transform_reverse.R</code></a></small>
+    <div class="hidden name"><code>time_reverse.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Coil</p>
+    <p>Transform a temporal object by time reversing it</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>coil</span>(<span class='kw'>bridge</span> <span class='kw'>=</span> <span class='fu'>meander</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>length</span> <span class='kw'>=</span> <span class='fl'>50</span>), <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.02</span>)</pre>
+    <pre class="usage"><span class='fu'>time_reverse</span>(<span class='no'>data</span>, <span class='kw'>append</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>bridge</th>
-      <td><p>bridge tibble</p></td>
+      <th>data</th>
+      <td><p>the object</p></td>
     </tr>
     <tr>
-      <th>scale</th>
-      <td><p>length of swirl</p></td>
+      <th>append</th>
+      <td><p>should the time reversed version be appended (loop back) or substituted?</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The same object but with time indices reversed</p>
     
 
   </div>
@@ -135,7 +139,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

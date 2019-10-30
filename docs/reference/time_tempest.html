@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coil — coil • jasmines</title>
+<title>Generate a tempest object — time_tempest • jasmines</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
 
 
-<meta property="og:title" content="Coil — coil" />
+<meta property="og:title" content="Generate a tempest object — time_tempest" />
 
-<meta property="og:description" content="Coil" />
+<meta property="og:description" content="Generate a tempest object" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -103,31 +103,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coil</h1>
-    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/transform_coil.R'><code>R/transform_coil.R</code></a></small>
-    <div class="hidden name"><code>coil.Rd</code></div>
+    <h1>Generate a tempest object</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/transform_tempest.R'><code>R/transform_tempest.R</code></a></small>
+    <div class="hidden name"><code>time_tempest.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Coil</p>
+    <p>Generate a tempest object</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>coil</span>(<span class='kw'>bridge</span> <span class='kw'>=</span> <span class='fu'>meander</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>length</span> <span class='kw'>=</span> <span class='fl'>50</span>), <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.02</span>)</pre>
+    <pre class="usage"><span class='fu'>time_tempest</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='seed_sticks.html'>seed_sticks</a></span>(), <span class='kw'>iterations</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.02</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>bridge</th>
-      <td><p>bridge tibble</p></td>
+      <th>seed</th>
+      <td><p>data frame with x, y, id</p></td>
+    </tr>
+    <tr>
+      <th>iterations</th>
+      <td><p>how many times should we iterate the curl noise?</p></td>
     </tr>
     <tr>
       <th>scale</th>
-      <td><p>length of swirl</p></td>
+      <td><p>how large is each curl step?</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a "tempest" ribbon, data frame with x, y, order, time and id</p>
     
 
   </div>
@@ -135,7 +143,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>
