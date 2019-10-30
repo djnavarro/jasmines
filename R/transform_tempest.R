@@ -6,7 +6,7 @@
 #'
 #' @return a "tempest" ribbon, data frame with x, y, order, time and id
 #' @export
-tempest <- function(
+time_tempest <- function(
   seed = seed_sticks(), # seed points
   iterations = 6,       # how many iterations to curl?
   scale = .02           # size of the curl step

@@ -24,7 +24,7 @@ style_walk <- function(
 ) {
 
   # scale the series so that x and y are between -1 and 1
-  bridge <- bridge %>%
+  bridge <- data %>%
     dplyr::mutate(
       x = x / max(abs(x), abs(y)),
       y = y / max(abs(x), abs(y))

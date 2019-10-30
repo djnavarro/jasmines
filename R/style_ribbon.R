@@ -25,6 +25,11 @@ style_ribbon <- function(
 
   ribbon <- data
 
+  #supply a default order if the input lacks one
+  if(!("order" %in% names(ribbon))) {
+    ribbon$order <- 1:nrow(ribbon)
+  }
+
   # min, max
   xmin <- min(ribbon$x)
   xmax <- max(ribbon$x)

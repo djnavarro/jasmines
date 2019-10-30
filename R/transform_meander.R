@@ -8,7 +8,7 @@
 #'
 #' @return tibble with columns series, time, x, y
 #' @export
-meander <- function(
+time_meander <- function(
   seed = 20,
   length = 100,
   smoothing = 6,
