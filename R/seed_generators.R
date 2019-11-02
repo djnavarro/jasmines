@@ -83,7 +83,7 @@ seed_rows <- function(n = 10, grain = 1000, vertical = FALSE) {
     } else{
       return(tibble::tibble(
         x = id/(n+1),
-        y = seq(0, 1, length.out = grain),
+        y = seq(1, 0, length.out = grain),
         id = id
       ))
     }

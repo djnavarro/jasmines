@@ -5,7 +5,7 @@
 \title{Style as a wrap image}
 \usage{
 style_wrap(data, background = "black", type = "line",
-  palette = palette_viridis())
+  palette = palette_viridis(), size = 2)
 }
 \arguments{
 \item{data}{a coiled bridge}
@@ -15,6 +15,8 @@ style_wrap(data, background = "black", type = "line",
 \item{type}{line, barbelle or points}
 
 \item{palette}{palette generator}
+
+\item{size}{line width}
 }
 \value{
 returns a ggplot2 object

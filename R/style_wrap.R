@@ -5,6 +5,7 @@
 #' @param background colour
 #' @param type line, barbelle or points
 #' @param palette palette generator
+#' @param size line width
 #'
 #' @return returns a ggplot2 object
 #' @export
@@ -12,7 +13,8 @@ style_wrap <- function(
   data,
   background = "black",
   type = "line",
-  palette = palette_viridis()
+  palette = palette_viridis(),
+  size = 2
 ) {
 
   coil <- data
@@ -31,12 +33,12 @@ style_wrap <- function(
 
   if(type == "line" | type == "barbell") {
     pic <- pic +
-      ggplot2::geom_segment(size = 2, show.legend = FALSE)
+      ggplot2::geom_segment(size = size, show.legend = FALSE)
   }
 
   if(type == "points" | type == "barbell") {
     pic <- pic +
-      ggplot2::geom_point(size = 2, show.legend = FALSE) +
+      ggplot2::geom_point(size = size, show.legend = FALSE) +
       ggplot2::geom_point(ggplot2::aes(x = x2, y = y2), show.legend = FALSE)
   }
 
