@@ -88,7 +88,7 @@ seed_rows <- function(n = 10, grain = 1000, vertical = FALSE) {
       ))
     }
   }
-  points <- purrr::map_dfr(1:n, make_row, grain = grain)
+  points <- purrr::map_dfr(1:n, make_row, grain = grain, vertical = vertical)
   return(points)
 }
 
