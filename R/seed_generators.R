@@ -68,16 +68,25 @@ seed_sticks <- function(n = 10, grain = 1000) {
 #'
 #' @param n how many rows
 #' @param grain how many points along each row
+#' @param vertical flip the x/y co-ords to produce columns?
 #'
 #' @return a tibble with columns x, y and id
 #' @export
-seed_rows <- function(n = 10, grain = 1000) {
-  make_row <- function(id, grain) {
+seed_rows <- function(n = 10, grain = 1000, vertical = FALSE) {
+  make_row <- function(id, grain, vertical = FALSE) {
+    if(!vertical) {
     return(tibble::tibble(
       x = seq(0, 1, length.out = grain),
       y = id/(n+1),
       id = id
     ))
+    } else{
+      return(tibble::tibble(
+        x = id/(n+1),
+        y = seq(0, 1, length.out = grain),
+        id = id
+      ))
+    }
   }
   points <- purrr::map_dfr(1:n, make_row, grain = grain)
   return(points)

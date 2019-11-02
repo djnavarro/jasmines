@@ -4,12 +4,14 @@
 \alias{seed_rows}
 \title{Seed with evenly spaced rows}
 \usage{
-seed_rows(n = 10, grain = 1000)
+seed_rows(n = 10, grain = 1000, vertical = FALSE)
 }
 \arguments{
 \item{n}{how many rows}
 
 \item{grain}{how many points along each row}
+
+\item{vertical}{flip the x/y co-ords to produce columns?}
 }
 \value{
 a tibble with columns x, y and id
