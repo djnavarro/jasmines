@@ -116,7 +116,7 @@
 
     <pre class="usage"><span class='fu'>style_ribbon</span>(<span class='no'>data</span>, <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>alpha_init</span> <span class='kw'>=</span> <span class='fl'>0.3</span>, <span class='kw'>alpha_decay</span> <span class='kw'>=</span> <span class='fl'>0</span>,
   <span class='kw'>seed_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>seed_fill</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='palette_viridis.html'>palette_viridis</a></span>(),
-  <span class='kw'>background</span> <span class='kw'>=</span> <span class='st'>"black"</span>)</pre>
+  <span class='kw'>background</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"segment"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,6 +152,14 @@
     <tr>
       <th>background</th>
       <td><p>colour of the background in the plot</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>type of geom to use ("segment", "curve" or "point")</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>arguments to pass to geom</p></td>
     </tr>
     </table>
     

@@ -6,7 +6,7 @@
 \usage{
 style_ribbon(data, burnin = 0, alpha_init = 0.3, alpha_decay = 0,
   seed_col = NULL, seed_fill = NULL, palette = palette_viridis(),
-  background = "black")
+  background = "black", type = "segment", ...)
 }
 \arguments{
 \item{data}{data frame with x, y, order, id, time}
@@ -24,6 +24,10 @@ style_ribbon(data, burnin = 0, alpha_init = 0.3, alpha_decay = 0,
 \item{palette}{function generating a palette}
 
 \item{background}{colour of the background in the plot}
+
+\item{type}{type of geom to use ("segment", "curve" or "point")}
+
+\item{...}{arguments to pass to geom}
 }
 \value{
 Returns a ggplot2 object

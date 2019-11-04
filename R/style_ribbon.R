@@ -9,6 +9,8 @@
 #' @param seed_fill what colour to fill the seed? (default: NULL)
 #' @param palette function generating a palette
 #' @param background colour of the background in the plot
+#' @param type type of geom to use ("segment", "curve" or "point")
+#' @param ... arguments to pass to geom
 #'
 #' @return Returns a ggplot2 object
 #' @export
@@ -20,7 +22,9 @@ style_ribbon <- function(
   seed_col = NULL,
   seed_fill = NULL,
   palette = palette_viridis(), # function to generate palette (args: n, alpha)
-  background = "black"
+  background = "black",
+  type = "segment",
+  ...
 ) {
 
   ribbon <- data
@@ -82,7 +86,6 @@ style_ribbon <- function(
       colour = factor(order)
     )
   ) +
-    ggplot2::geom_segment(show.legend = FALSE) +
     ggplot2::scale_color_manual(values = col_set) +
     ggplot2::scale_alpha_identity() +
     theme_mono(background) +
@@ -90,6 +93,19 @@ style_ribbon <- function(
       xlim = c(-.05, 1.05),
       ylim = c(-.05, 1.05)
     )
+
+  # add the plot information
+  if(type == "segment") {
+    pic <- pic + ggplot2::geom_segment(show.legend = FALSE, ...)
+  }
+  if(type == "curve") {
+    pic <- pic + ggplot2::geom_curve(show.legend = FALSE, ...)
+  }
+  if(type == "point") {
+    pic <- pic + ggplot2::geom_point(show.legend = FALSE, ...)
+  }
+
+
 
   # add hollow fill for seed if requested
   if(!is.null(seed_fill)) {
