@@ -14,6 +14,37 @@ seed_heart <- function(n = 100) {
   )
 }
 
+#' Seed shaped like concentric rings
+#'
+#' @param points Total number of interior points
+#' @param rings How many rings to spread across?
+#' @param size Radius of the outermost ring
+#' @export
+seed_disc <- function(points = 1000, rings = 10, size = 1) {
+  radius <- size * (1:rings)/rings
+  circumference <- 2 * pi * radius
+  proportion <- circumference / sum(circumference)
+  counts <- round(points * proportion)
+
+  unfold <- function(radius, grain, id) {
+
+    theta <- seq(0, 2*pi, length.out = grain + 1)
+    theta <- theta[-1]
+    return(tibble::tibble(
+      x = radius * cos(theta),
+      y = radius * sin(theta),
+      id = id
+    ))
+  }
+
+  seed <- purrr::pmap_dfr(
+    .l = list(radius, counts, 1:length(radius)),
+    .f = unfold
+  )
+
+  return(seed)
+}
+
 
 
 #' Seed shaped from text
