@@ -1,12 +1,6 @@
-library(ambient)
-library(imager)
-library(tidyverse)
-library(gganimate)
-library(purrr)
 
 #' @importFrom dplyr %>%
 NULL
-
 
 #' Creates a collage of noise samples
 #'
