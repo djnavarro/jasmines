@@ -16,7 +16,7 @@
 #'
 #' @export
 style_walk <- function(
-  data = meander(),
+  data = time_meander(),
   wake_length = .1,
   palette = palette_scico(palette="berlin"),
   background = "black",

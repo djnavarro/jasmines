@@ -4,7 +4,7 @@
 \alias{coil}
 \title{Coil}
 \usage{
-coil(bridge = meander(seed = 50, length = 50), scale = 0.02)
+coil(bridge = time_meander(seed = 50, length = 50), scale = 0.02)
 }
 \arguments{
 \item{bridge}{bridge tibble}

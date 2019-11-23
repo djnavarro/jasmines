@@ -4,7 +4,7 @@
 \alias{style_walk}
 \title{Style as animated points}
 \usage{
-style_walk(data = meander(), wake_length = 0.1,
+style_walk(data = time_meander(), wake_length = 0.1,
   palette = palette_scico(palette = "berlin"), background = "black",
   ...)
 }
