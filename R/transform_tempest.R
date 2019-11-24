@@ -3,13 +3,15 @@
 #' @param seed data frame with x, y, id
 #' @param iterations how many times should we iterate the curl noise?
 #' @param scale how large is each curl step?
+#' @param curl_seed arguments to pass to curl_noise()
 #'
 #' @return a "tempest" ribbon, data frame with x, y, order, time and id
 #' @export
 time_tempest <- function(
   seed = seed_sticks(), # seed points
   iterations = 6,       # how many iterations to curl?
-  scale = .02           # size of the curl step
+  scale = .02,          # size of the curl step
+  curl_seed = NULL
 ) {
 
   # iterate each point through curl noise
@@ -23,7 +25,8 @@ time_tempest <- function(
     ribbon[[i+1]] <- ambient::curl_noise(
       ambient::gen_simplex,
       x = ribbon[[i]]$x,
-      y = ribbon[[i]]$y
+      y = ribbon[[i]]$y,
+      seed = curl_seed
     )
 
     # retain the id

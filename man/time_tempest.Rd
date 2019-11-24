@@ -4,7 +4,8 @@
 \alias{time_tempest}
 \title{Generate a tempest object}
 \usage{
-time_tempest(seed = seed_sticks(), iterations = 6, scale = 0.02)
+time_tempest(seed = seed_sticks(), iterations = 6, scale = 0.02,
+  curl_seed = NULL)
 }
 \arguments{
 \item{seed}{data frame with x, y, id}
@@ -12,6 +13,8 @@ time_tempest(seed = seed_sticks(), iterations = 6, scale = 0.02)
 \item{iterations}{how many times should we iterate the curl noise?}
 
 \item{scale}{how large is each curl step?}
+
+\item{curl_seed}{arguments to pass to curl_noise()}
 }
 \value{
 a "tempest" ribbon, data frame with x, y, order, time and id

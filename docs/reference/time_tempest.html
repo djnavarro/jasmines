@@ -114,7 +114,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>time_tempest</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='seed_sticks.html'>seed_sticks</a></span>(), <span class='kw'>iterations</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.02</span>)</pre>
+    <pre class="usage"><span class='fu'>time_tempest</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='seed_sticks.html'>seed_sticks</a></span>(), <span class='kw'>iterations</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.02</span>,
+  <span class='kw'>curl_seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -130,6 +131,10 @@
     <tr>
       <th>scale</th>
       <td><p>how large is each curl step?</p></td>
+    </tr>
+    <tr>
+      <th>curl_seed</th>
+      <td><p>arguments to pass to curl_noise()</p></td>
     </tr>
     </table>
     
