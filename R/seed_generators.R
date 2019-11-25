@@ -1,3 +1,20 @@
+#' Seed shaped like a teardrop
+#'
+#' @param n number of dot points
+#' @param m exponent
+#'
+#' @return tibble
+#' @export
+seed_teardrop <- function(n = 100, m = 3) {
+  t <- seq(0, 2*pi, length.out = n)
+  tibble::tibble(
+    x = sin(t) * (sin(t/2))^m,
+    y = cos(t),
+    id = 1
+  )
+}
+
+
 
 #' Seed shaped like a heart
 #'
