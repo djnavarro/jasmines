@@ -8,6 +8,23 @@ palette_scico <- function(...) {
   function(n, alpha = NULL) scico::scico(n = n, alpha = alpha, ...)
 }
 
+#' Function factory for manual palettes
+#'
+#' @param ... colour names
+#'
+#' @return a function that takes arguments n and alpha
+#' @export
+palette_manual <- function(...) {
+  colours <- c(...)
+  palette <- function(n = 50, alpha = 1) {
+    m <- ceiling(n/length(colours))
+    cols <- as.vector(t(replicate(m,colours)))
+    return(cols[1:n])
+  }
+  return(palette)
+}
+
+
 #' Function factory viridis palettes
 #'
 #' @param ... arguments to be passed to viridis::viridis
