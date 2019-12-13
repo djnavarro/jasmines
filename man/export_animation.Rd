@@ -4,8 +4,7 @@
 \alias{export_animation}
 \title{Export animation to a file}
 \usage{
-export_animation(input, filename, nframes = 200, detail = 5,
-  type = "cairo")
+export_animation(input, filename, nframes = 200, detail = 5, type = "cairo")
 }
 \arguments{
 \item{input}{art object to print}

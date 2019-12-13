@@ -4,8 +4,13 @@
 \alias{style_wrap}
 \title{Style as a wrap image}
 \usage{
-style_wrap(data, background = "black", type = "line",
-  palette = palette_viridis(), size = 2)
+style_wrap(
+  data,
+  background = "black",
+  type = "line",
+  palette = palette_viridis(),
+  size = 2
+)
 }
 \arguments{
 \item{data}{a coiled bridge}

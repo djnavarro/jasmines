@@ -4,9 +4,19 @@
 \alias{style_ribbon}
 \title{Style as a ribbon image}
 \usage{
-style_ribbon(data, burnin = 0, alpha_init = 0.3, alpha_decay = 0,
-  seed_col = NULL, seed_fill = NULL, palette = palette_viridis(),
-  background = "black", type = "segment", ...)
+style_ribbon(
+  data,
+  burnin = 0,
+  alpha_init = 0.3,
+  alpha_decay = 0,
+  seed_col = NULL,
+  seed_fill = NULL,
+  seed_linewidth = 1,
+  palette = palette_viridis(),
+  background = "black",
+  type = "segment",
+  ...
+)
 }
 \arguments{
 \item{data}{data frame with x, y, order, id, time}
@@ -20,6 +30,8 @@ style_ribbon(data, burnin = 0, alpha_init = 0.3, alpha_decay = 0,
 \item{seed_col}{what colour to draw the seed? (default: NULL)}
 
 \item{seed_fill}{what colour to fill the seed? (default: NULL)}
+
+\item{seed_linewidth}{width of the seed lines}
 
 \item{palette}{function generating a palette}
 

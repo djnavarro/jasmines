@@ -7,6 +7,7 @@
 #' @param alpha_decay how does transparency decay over iterations?
 #' @param seed_col what colour to draw the seed? (default: NULL)
 #' @param seed_fill what colour to fill the seed? (default: NULL)
+#' @param seed_linewidth width of the seed lines
 #' @param palette function generating a palette
 #' @param background colour of the background in the plot
 #' @param type type of geom to use ("segment", "curve" or "point")
@@ -21,6 +22,7 @@ style_ribbon <- function(
   alpha_decay = 0, # rate of decay
   seed_col = NULL,
   seed_fill = NULL,
+  seed_linewidth = 1,
   palette = palette_viridis(), # function to generate palette (args: n, alpha)
   background = "black",
   type = "segment",
@@ -127,7 +129,9 @@ style_ribbon <- function(
         mapping = ggplot2::aes(x = x, y = y, group = factor(id)),
         inherit.aes = FALSE,
         colour = seed_col,
-        show.legend = FALSE)
+        show.legend = FALSE,
+        size = seed_linewidth
+      )
   }
 
 

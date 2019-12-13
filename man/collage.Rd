@@ -4,8 +4,7 @@
 \alias{collage}
 \title{Creates a collage of noise samples}
 \usage{
-collage(generator = ambient::noise_worley, palette = "tokyo",
-  grain = 500, ...)
+collage(generator = ambient::noise_worley, palette = "tokyo", grain = 500, ...)
 }
 \arguments{
 \item{generator}{the function (in ambient) to generate noise}

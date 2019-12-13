@@ -4,8 +4,12 @@
 \alias{time_tempest}
 \title{Generate a tempest object}
 \usage{
-time_tempest(seed = seed_sticks(), iterations = 6, scale = 0.02,
-  curl_seed = NULL)
+time_tempest(
+  seed = seed_sticks(),
+  iterations = 6,
+  scale = 0.02,
+  curl_seed = NULL
+)
 }
 \arguments{
 \item{seed}{data frame with x, y, id}
