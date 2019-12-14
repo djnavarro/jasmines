@@ -28,7 +28,8 @@ Imports:
     magrittr,
     gganimate,
     e1071,
-    magick
+    magick,
+    spatstat
 URL: https://github.com/djnavarro/jasmines
 BugReports: https://github.com/djnavarro/jasmines/issues
 RoxygenNote: 7.0.2
