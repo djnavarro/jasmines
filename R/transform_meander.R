@@ -5,6 +5,7 @@
 #' @param length number of time points in the time series
 #' @param smoothing number of smoothing iterations
 #' @param endpause length of pause at the end
+#' @param na.rm logical, remove NAs from seed
 #'
 #' @return tibble with columns series, time, x, y
 #' @export
@@ -12,8 +13,9 @@ time_meander <- function(
   seed = 20,
   length = 100,
   smoothing = 6,
-  endpause = 0
-) {
+  endpause = 0,
+  na.rm = TRUE          # Remove NA values from the data.frame
+){
 
   # if seed is an number, interpret it as the number of
   # time series to generate, and do not shift the data
@@ -25,6 +27,11 @@ time_meander <- function(
     # columns, xpos and ypos, indicating the offset for
     # each of the series
   } else {
+      if(apply(seed, 2, function(x) any(is.na(x))) && !na.rm) stop("Data contains NA's you should remove them if you want this to work. (don't be Dale)")
+
+      if(apply(seed, 2, function(x) any(is.na(x))) && na.rm){
+        seed<- dplyr::filter(.data = seed, !is.na(seed$x),!is.na(seed$y))
+      }
     nseries <- nrow(seed)
     seed$id <- 1:nseries
     shift <- TRUE

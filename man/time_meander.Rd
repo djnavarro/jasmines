@@ -4,7 +4,13 @@
 \alias{time_meander}
 \title{Make smoothed brownian bridge time series}
 \usage{
-time_meander(seed = 20, length = 100, smoothing = 6, endpause = 0)
+time_meander(
+  seed = 20,
+  length = 100,
+  smoothing = 6,
+  endpause = 0,
+  na.rm = TRUE
+)
 }
 \arguments{
 \item{seed}{number of time series or complete seed as tibble}
@@ -14,6 +20,8 @@ time_meander(seed = 20, length = 100, smoothing = 6, endpause = 0)
 \item{smoothing}{number of smoothing iterations}
 
 \item{endpause}{length of pause at the end}
+
+\item{na.rm}{logical, remove NAs from seed}
 }
 \value{
 tibble with columns series, time, x, y
