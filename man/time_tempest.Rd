@@ -8,7 +8,8 @@ time_tempest(
   seed = seed_sticks(),
   iterations = 6,
   scale = 0.02,
-  curl_seed = NULL
+  curl_seed = NULL,
+  na.rm = TRUE
 )
 }
 \arguments{
@@ -18,7 +19,9 @@ time_tempest(
 
 \item{scale}{how large is each curl step?}
 
-\item{curl_seed}{arguments to pass to curl_noise()}
+\item{curl_seed}{arguments Tto pass to curl_noise()}
+
+\item{na.rm}{logical, remove NAs from seed}
 }
 \value{
 a "tempest" ribbon, data frame with x, y, order, time and id
