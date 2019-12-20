@@ -4,7 +4,7 @@
 \alias{locate_entity}
 \title{Locate entities}
 \usage{
-locate_entity(entity, xpos = 0, ypos = 0, size = 1, angle = 0)
+locate_entity(entity, xpos = 0, ypos = 0, size = 1, angle = 0, ...)
 }
 \arguments{
 \item{entity}{The entity to be placed}
@@ -16,6 +16,8 @@ locate_entity(entity, xpos = 0, ypos = 0, size = 1, angle = 0)
 \item{size}{Parameter controlling the size of the entity}
 
 \item{angle}{Parameter controlling the orientation of the entity}
+
+\item{...}{Other arguments are ignored}
 }
 \value{
 A tibble with four columns: x, y, id and type

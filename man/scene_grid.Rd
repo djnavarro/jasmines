@@ -5,9 +5,9 @@
 \title{Create a scene with multiple entities laid out in a grid}
 \usage{
 scene_grid(
-  entity,
-  nrow = 3,
-  ncol = 3,
+  xpos = 1:3,
+  ypos = 1:3,
+  entity = "circle",
   grain = 50,
   size = 1,
   shape = 3,
@@ -15,11 +15,11 @@ scene_grid(
 )
 }
 \arguments{
-\item{entity}{The entity type (e.g., "line")}
+\item{xpos}{Numeric vector specifying horizontal locations}
 
-\item{nrow}{Number of rows}
+\item{ypos}{Numeric vector specifying vertical locations}
 
-\item{ncol}{Number of columns}
+\item{entity}{The entity type (e.g., "line", "circle")}
 
 \item{grain}{The number of points per entity}
 

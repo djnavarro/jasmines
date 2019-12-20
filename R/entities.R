@@ -29,8 +29,8 @@ radians <- function(grain) {
 #' @rdname entitytype
 entity_circle <- function(grain = 50, id = NULL, ...) {
   th <- radians(grain)
-  x <- cos(th)
-  y <- sin(th)
+  x <- cos(th)/2
+  y <- sin(th)/2
   entity <- new_entity(x = x, y = y, id = id, type = "circle")
   entity <- locate_entity(entity, ...)
   return(entity)
@@ -102,6 +102,7 @@ entity_null <- function(...) {
 #' @param ypos The vertical location of the entity
 #' @param size Parameter controlling the size of the entity
 #' @param angle Parameter controlling the orientation of the entity
+#' @param ... Other arguments are ignored
 #'
 #' @return A tibble with four columns: x, y, id and type
 #' @details When a jasmine entity is created it is implicitly assumed to be
@@ -109,7 +110,7 @@ entity_null <- function(...) {
 #' a horizontal orientation (angle = 0). The locate_entity function allows the
 #' entity to be transformed in simple ways: translation, dilation and rotations
 #' @export
-locate_entity <- function(entity, xpos = 0, ypos = 0, size = 1, angle = 0) {
+locate_entity <- function(entity, xpos = 0, ypos = 0, size = 1, angle = 0, ...) {
 
   xx <- entity$x
   yy <- entity$y
