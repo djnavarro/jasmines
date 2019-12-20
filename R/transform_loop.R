@@ -1,7 +1,7 @@
-# utility function to generate points from 0 to 2\pi
-radians <- function(npoints) {
-  seq(0, 2*pi, length.out = npoints + 1)[1:npoints]
-}
+# # utility function to generate points from 0 to 2\pi
+# radians <- function(npoints) {
+#   seq(0, 2*pi, length.out = npoints + 1)[1:npoints]
+# }
 
 #' Take a seed object and convert each point to a loop
 #'
