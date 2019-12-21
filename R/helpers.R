@@ -36,12 +36,7 @@ palette_viridis <- function(...) {
 }
 
 
-#' Theme that supplies a background colour only
-#'
-#' @param background the background colour
-#'
-#' @return ggplot theme
-#' @export
+# Theme that supplies a background colour only
 theme_mono <- function(background) {
   ggplot2::theme_void() +
     ggplot2::theme(
