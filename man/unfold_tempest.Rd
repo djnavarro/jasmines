@@ -8,7 +8,7 @@ unfold_tempest(
   data = seed_sticks(),
   iterations = 6,
   scale = 0.02,
-  curl_seed = NULL,
+  seed = NULL,
   output1 = "time",
   output2 = "order"
 )
@@ -20,7 +20,7 @@ unfold_tempest(
 
 \item{scale}{how large is each curl step?}
 
-\item{curl_seed}{arguments to pass to curl_noise()}
+\item{seed}{seed to pass to curl_noise()}
 }
 \value{
 a "tempest" ribbon, data frame with x, y, order, time and id
