@@ -1,4 +1,7 @@
-# scene generators
+# scene generators: "scenes" in the jasmines package are collections of
+# entities. they have the same variables (x, y, id, type), but whereas
+# all points in an entity have the same id, a scene consists of multiple
+# entities that can have different ids
 
 
 # helper function to create the entity
