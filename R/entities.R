@@ -21,8 +21,9 @@
 #' @name entitytype
 NULL
 
-radians <- function(grain) {
-  seq(0, 2*pi, length.out = grain + 1)[1:grain]
+radians <- function(grain, closed = TRUE) {
+  if(closed) return(seq(0, 2*pi, length.out = grain))
+  return(seq(0, 2*pi, length.out = grain + 1)[1:grain])
 }
 
 #' @export

@@ -4,7 +4,7 @@
 #' @param scale length of swirl
 #' @export
 coil <- function(
-  bridge = time_meander(seed = 50, length = 50),
+  bridge = unfold_meander(),
   scale = .02
 ) {
 

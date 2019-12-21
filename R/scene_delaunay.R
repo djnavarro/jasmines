@@ -3,9 +3,9 @@
 #' @param n Number of vertices
 #' @param grain Number of points along each line
 #'
-#' @return A tibble with columns x, y and id
+#' @return A tibble with four columns: x, y, id and type
 #' @export
-seed_delaunay <- function(n = 20, grain = 50) {
+scene_delaunay <- function(n = 20, grain = 50) {
 
 	# create the delaunay tiling
 	points <- spatstat::runifpoint(n)
@@ -33,6 +33,7 @@ seed_delaunay <- function(n = 20, grain = 50) {
 
 	del <- purrr::transpose(del)
 	del <- purrr::map2_dfr(del[-1], del[-length(del)], interp)
+	del$type <- "triangle"
 
 	return(del)
 

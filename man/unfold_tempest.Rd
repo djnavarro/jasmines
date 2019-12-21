@@ -5,7 +5,7 @@
 \title{Generate a tempest object}
 \usage{
 unfold_tempest(
-  data = seed_sticks(),
+  data = scene_sticks(),
   iterations = 6,
   scale = 0.02,
   seed = NULL,
@@ -21,6 +21,10 @@ unfold_tempest(
 \item{scale}{how large is each curl step?}
 
 \item{seed}{seed to pass to curl_noise()}
+
+\item{output1}{name of the primary unfolding variable to add (e.g., time)}
+
+\item{output2}{name of the secondary unfolding variable to add (e.g., order)}
 }
 \value{
 a "tempest" ribbon, data frame with x, y, order, time and id

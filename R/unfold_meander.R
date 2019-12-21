@@ -5,12 +5,13 @@
 #' @param iterations number of time points in the time series
 #' @param smoothing number of smoothing iterations
 #' @param endpause length of pause at the end
-#' @param output name of the variable
+#' @param output1 name of the primary unfolding variable to add (e.g., time)
+#' @param output2 name of the secondary unfolding variable to add (e.g., series)
 #'
 #' @return tibble with columns series, time, x, y
 #' @export
 unfold_meander <- function(
-  data = 20,
+  data = entity_circle(),
   iterations = 100,
   smoothing = 6,
   endpause = 0,

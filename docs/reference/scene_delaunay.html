@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coil — coil • jasmines</title>
+<title>Generate seed points with a Delaunay triangulation — scene_delaunay • jasmines</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Coil — coil" />
-<meta property="og:description" content="Coil" />
+<meta property="og:title" content="Generate seed points with a Delaunay triangulation — scene_delaunay" />
+<meta property="og:description" content="Generate seed points with a Delaunay triangulation" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,36 +105,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coil</h1>
-    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/transform_coil.R'><code>R/transform_coil.R</code></a></small>
-    <div class="hidden name"><code>coil.Rd</code></div>
+    <h1>Generate seed points with a Delaunay triangulation</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/scene_delaunay.R'><code>R/scene_delaunay.R</code></a></small>
+    <div class="hidden name"><code>scene_delaunay.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Coil</p>
+    <p>Generate seed points with a Delaunay triangulation</p>
     </div>
 
-    <pre class="usage"><span class='fu'>coil</span>(<span class='kw'>bridge</span> <span class='kw'>=</span> <span class='fu'>time_meander</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>length</span> <span class='kw'>=</span> <span class='fl'>50</span>), <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.02</span>)</pre>
+    <pre class="usage"><span class='fu'>scene_delaunay</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>50</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>bridge</th>
-      <td><p>bridge tibble</p></td>
+      <th>n</th>
+      <td><p>Number of vertices</p></td>
     </tr>
     <tr>
-      <th>scale</th>
-      <td><p>length of swirl</p></td>
+      <th>grain</th>
+      <td><p>Number of points along each line</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A tibble with four columns: x, y, id and type</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
     </ul>
 
   </div>

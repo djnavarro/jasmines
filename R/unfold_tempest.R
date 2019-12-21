@@ -4,11 +4,13 @@
 #' @param iterations how many times should we iterate the curl noise?
 #' @param scale how large is each curl step?
 #' @param seed seed to pass to curl_noise()
+#' @param output1 name of the primary unfolding variable to add (e.g., time)
+#' @param output2 name of the secondary unfolding variable to add (e.g., order)
 #'
 #' @return a "tempest" ribbon, data frame with x, y, order, time and id
 #' @export
 unfold_tempest <- function(
-  data = seed_sticks(), # seed points
+  data = scene_sticks(), # seed points
   iterations = 6,       # how many iterations to curl?
   scale = .02,          # size of the curl step
   seed = NULL,

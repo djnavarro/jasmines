@@ -5,7 +5,7 @@
 \title{Make smoothed brownian bridge time series}
 \usage{
 unfold_meander(
-  data = 20,
+  data = entity_circle(),
   iterations = 100,
   smoothing = 6,
   endpause = 0,
@@ -22,7 +22,9 @@ unfold_meander(
 
 \item{endpause}{length of pause at the end}
 
-\item{output}{name of the variable}
+\item{output1}{name of the primary unfolding variable to add (e.g., time)}
+
+\item{output2}{name of the secondary unfolding variable to add (e.g., series)}
 }
 \value{
 tibble with columns series, time, x, y
