@@ -11,7 +11,7 @@
 #'
 #' @return a tibble with x, y, id and time
 #' @export
-time_loop <- function(data, points = 20, radius = 1) {
+unfold_loop <- function(data, points = 20, radius = 1) {
 
   enloop <- function(df) {
     th <- radians(points)
