@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a scene that places randomly sampled entities — scene_mix • jasmines</title>
+<title>Seed shaped like concentric rings — scene_discs • jasmines</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Create a scene that places randomly sampled entities — scene_mix" />
-<meta property="og:description" content="Create a scene that places randomly sampled entities" />
+<meta property="og:title" content="Seed shaped like concentric rings — scene_discs" />
+<meta property="og:description" content="Seed shaped like concentric rings" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,73 +105,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a scene that places randomly sampled entities</h1>
-    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/scenes.R'><code>R/scenes.R</code></a></small>
-    <div class="hidden name"><code>scene_mix.Rd</code></div>
+    <h1>Seed shaped like concentric rings</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/scenes_legacy.R'><code>R/scenes_legacy.R</code></a></small>
+    <div class="hidden name"><code>scene_discs.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a scene that places randomly sampled entities</p>
+    <p>Seed shaped like concentric rings</p>
     </div>
 
-    <pre class="usage"><span class='fu'>scene_mix</span>(
-  <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5</span>,
-  <span class='kw'>xpos</span> <span class='kw'>=</span> (<span class='fl'>1</span>:<span class='fl'>20</span>)/<span class='fl'>4</span>,
-  <span class='kw'>ypos</span> <span class='kw'>=</span> (<span class='fl'>1</span>:<span class='fl'>20</span>)/<span class='fl'>4</span>,
-  <span class='kw'>entity</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"circle"</span>, <span class='st'>"line"</span>, <span class='st'>"heart"</span>, <span class='st'>"droplet"</span>),
-  <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>size</span> <span class='kw'>=</span> (<span class='fl'>10</span>:<span class='fl'>20</span>)/<span class='fl'>20</span>,
-  <span class='kw'>shape</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>angle</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>2</span> * <span class='no'>pi</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>20</span>)
-)</pre>
+    <pre class="usage"><span class='fu'>scene_discs</span>(<span class='kw'>points</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>rings</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>2</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>n</th>
-      <td><p>Number of entities</p></td>
+      <th>points</th>
+      <td><p>Total number of interior points</p></td>
     </tr>
     <tr>
-      <th>xpos</th>
-      <td><p>Numeric vector specifying possible horizontal locations</p></td>
-    </tr>
-    <tr>
-      <th>ypos</th>
-      <td><p>Numeric vector specifying possible vertical locations</p></td>
-    </tr>
-    <tr>
-      <th>entity</th>
-      <td><p>Character vector specifying possible entity types (e.g., "line", "circle")</p></td>
-    </tr>
-    <tr>
-      <th>grain</th>
-      <td><p>Numeric vector specifying possible grains</p></td>
+      <th>rings</th>
+      <td><p>How many rings to spread across?</p></td>
     </tr>
     <tr>
       <th>size</th>
-      <td><p>Numeric vector specifying possible sizes</p></td>
-    </tr>
-    <tr>
-      <th>shape</th>
-      <td><p>Numeric vector specifying possible shapes</p></td>
-    </tr>
-    <tr>
-      <th>angle</th>
-      <td><p>Numeric vector specifying possible angles</p></td>
+      <td><p>Diameter of the outermost ring</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A tibble with four columns: x, y, id and type</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
     </ul>
 
   </div>

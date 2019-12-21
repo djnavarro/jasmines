@@ -16,7 +16,7 @@ scene_mix(
 )
 }
 \arguments{
-\item{n}{number o}
+\item{n}{Number of entities}
 
 \item{xpos}{Numeric vector specifying possible horizontal locations}
 

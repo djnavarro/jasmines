@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a scene that places randomly sampled entities — scene_mix • jasmines</title>
+<title>Seed with evenly spaced rows — scene_rows • jasmines</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Create a scene that places randomly sampled entities — scene_mix" />
-<meta property="og:description" content="Create a scene that places randomly sampled entities" />
+<meta property="og:title" content="Seed with evenly spaced rows — scene_rows" />
+<meta property="og:description" content="Seed with evenly spaced rows" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,60 +105,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a scene that places randomly sampled entities</h1>
-    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/scenes.R'><code>R/scenes.R</code></a></small>
-    <div class="hidden name"><code>scene_mix.Rd</code></div>
+    <h1>Seed with evenly spaced rows</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/scenes_legacy.R'><code>R/scenes_legacy.R</code></a></small>
+    <div class="hidden name"><code>scene_rows.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a scene that places randomly sampled entities</p>
+    <p>Seed with evenly spaced rows</p>
     </div>
 
-    <pre class="usage"><span class='fu'>scene_mix</span>(
-  <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5</span>,
-  <span class='kw'>xpos</span> <span class='kw'>=</span> (<span class='fl'>1</span>:<span class='fl'>20</span>)/<span class='fl'>4</span>,
-  <span class='kw'>ypos</span> <span class='kw'>=</span> (<span class='fl'>1</span>:<span class='fl'>20</span>)/<span class='fl'>4</span>,
-  <span class='kw'>entity</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"circle"</span>, <span class='st'>"line"</span>, <span class='st'>"heart"</span>, <span class='st'>"droplet"</span>),
-  <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>size</span> <span class='kw'>=</span> (<span class='fl'>10</span>:<span class='fl'>20</span>)/<span class='fl'>20</span>,
-  <span class='kw'>shape</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>angle</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>2</span> * <span class='no'>pi</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>20</span>)
-)</pre>
+    <pre class="usage"><span class='fu'>scene_rows</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>vertical</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>n</th>
-      <td><p>Number of entities</p></td>
-    </tr>
-    <tr>
-      <th>xpos</th>
-      <td><p>Numeric vector specifying possible horizontal locations</p></td>
-    </tr>
-    <tr>
-      <th>ypos</th>
-      <td><p>Numeric vector specifying possible vertical locations</p></td>
-    </tr>
-    <tr>
-      <th>entity</th>
-      <td><p>Character vector specifying possible entity types (e.g., "line", "circle")</p></td>
+      <td><p>Number of rows</p></td>
     </tr>
     <tr>
       <th>grain</th>
-      <td><p>Numeric vector specifying possible grains</p></td>
+      <td><p>The number of points per row</p></td>
     </tr>
     <tr>
-      <th>size</th>
-      <td><p>Numeric vector specifying possible sizes</p></td>
-    </tr>
-    <tr>
-      <th>shape</th>
-      <td><p>Numeric vector specifying possible shapes</p></td>
-    </tr>
-    <tr>
-      <th>angle</th>
-      <td><p>Numeric vector specifying possible angles</p></td>
+      <th>vertical</th>
+      <td><p>Flip the x/y co-ords to produce columns?</p></td>
     </tr>
     </table>
 

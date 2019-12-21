@@ -77,7 +77,7 @@ scene_grid <- function(
 
 #' Create a scene that places randomly sampled entities
 #'
-#' @param n number o
+#' @param n Number of entities
 #' @param xpos Numeric vector specifying possible horizontal locations
 #' @param ypos Numeric vector specifying possible vertical locations
 #' @param entity Character vector specifying possible entity types (e.g., "line", "circle")
