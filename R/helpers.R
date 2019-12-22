@@ -1,39 +1,3 @@
-#' Function factory for scico palettes
-#'
-#' @param ... arguments (besides n and alpha) to be passed to scico::scico
-#'
-#' @return a function that takes arguments n and alpha
-#' @export
-palette_scico <- function(...) {
-  function(n, alpha = NULL) scico::scico(n = n, alpha = alpha, ...)
-}
-
-#' Function factory for manual palettes
-#'
-#' @param ... colour names
-#'
-#' @return a function that takes arguments n and alpha
-#' @export
-palette_manual <- function(...) {
-  colours <- c(...)
-  palette <- function(n = 50, alpha = 1) {
-    m <- ceiling(n/length(colours))
-    cols <- as.vector(t(replicate(m,colours)))
-    return(cols[1:n])
-  }
-  return(palette)
-}
-
-
-#' Function factory viridis palettes
-#'
-#' @param ... arguments to be passed to viridis::viridis
-#'
-#' @return a function that takes arguments n and alpha
-#' @export
-palette_viridis <- function(...) {
-  function(n, alpha) viridis::viridis(n, alpha, ...)
-}
 
 
 # Theme that supplies a background colour only
@@ -53,9 +17,6 @@ theme_mono <- function(background) {
       ),
     )
 }
-
-
-
 
 make_dotted_letters <-function() {
 
