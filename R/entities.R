@@ -157,7 +157,7 @@ new_entity <- function(x, y, id = NULL, type = NULL) {
   if(!is.numeric(id)) {stop("`id` code for a jasmine entity must be numeric", call. = FALSE)}
 
   # construct the object and return
-  entity <- tibble::tibble(x = x, y = y, id = id, type = type)
+  entity <- tibble::tibble(x = x, y = y, ind = 1:length(x), id = id, type = type)
   return(entity)
 }
 
