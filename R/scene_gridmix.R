@@ -122,6 +122,7 @@ scene_mix <- function(
     shape  = do_sample(shape, size = n),
     angle  = do_sample(angle, size = n)
   )
+  sc$id <- 1:nrow(sc)
 
   # map
   sc <- purrr::transpose(sc)
