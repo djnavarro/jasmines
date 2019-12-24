@@ -32,7 +32,7 @@ palette_named <- function(name = NULL, ...) {
     "tokyo", "turku", "vik"
   )
   viridis_names <- c("magma", "inferno", "plasma", "viridis")
-  jasmine_names <- c("ropensci")
+  jasmine_names <- c("ropensci", "blood")
   all_names <- sort(c(scico_names, viridis_names, jasmine_names))
 
   # check input
@@ -51,7 +51,8 @@ palette_named <- function(name = NULL, ...) {
     return(palette_viridis(option = name, ...))
   }
   if(name %in% jasmine_names) {
-    return(palette_ropensci(...))
+    if(name == "ropensci") return(palette_ropensci(...))
+    if(name == "blood") return(palette_blood(...))
   }
 }
 
@@ -62,6 +63,14 @@ palette_scico <- function(...) {
 
 palette_viridis <- function(...) {
   function(n, alpha) viridis::viridis(n, alpha, ...)
+}
+
+palette_blood <- function(...) {
+  return(palette_manual(
+      "#7c0a02", "#92000a", "#880000", "#8a0303", "#8a0303", "#740707",
+      "#560e07", "#490805", "#400303", "#220000", "b000000", "#660000",
+      "#7e3517"
+  ))
 }
 
 palette_ropensci <- function(type = "plain", ...) {
