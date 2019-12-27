@@ -71,10 +71,8 @@ style_ribbon <- function(
   ribbon$yend <- ribbon2$yend
   ribbon$order <- ribbon2$order
 
-  #return(ribbon)
-
-  # get colour values
-  col_set <- palette(n = max(ribbon$order))
+  # generate colour set
+  col_set <- colours_from(palette, ribbon$order)
 
   # create basic object
   pic <- ggplot2::ggplot(
@@ -138,6 +136,14 @@ style_ribbon <- function(
   return(pic)
 }
 
+# colours_from <- function(palette, order, ...) {
+#   palette(n = max(order)) # original
+# }
+
+
+colours_from <- function(palette, order, ...) {
+  palette(n = length(unique(order)))
+}
 
 #   # fill in the seed shape if requested
 #   if(!is.null(seed_fill)) {
