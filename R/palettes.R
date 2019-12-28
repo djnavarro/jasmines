@@ -33,7 +33,8 @@ palette_named <- function(name = NULL, ...) {
   )
   viridis_names <- c("magma", "inferno", "plasma", "viridis")
   jasmine_names <- c("ropensci", "blood")
-  all_names <- sort(c(scico_names, viridis_names, jasmine_names))
+  base_names <- c("rainbow")
+  all_names <- sort(c(scico_names, viridis_names, jasmine_names, base_names))
 
   # check input
   if(is.null(name)) {
@@ -54,15 +55,21 @@ palette_named <- function(name = NULL, ...) {
     if(name == "ropensci") return(palette_ropensci(...))
     if(name == "blood") return(palette_blood(...))
   }
+  if(name %in% base_names) {
+    if(name == "rainbow") return(palette_rainbow(...))
+  }
 }
 
+palette_rainbow <- function(...) {
+  function(n, alpha = 1) {rainbow(n = n, alpha = alpha, ...)}
+}
 
 palette_scico <- function(...) {
-  function(n, alpha = NULL) scico::scico(n = n, alpha = alpha, ...)
+  function(n, alpha = 1) scico::scico(n = n, alpha = alpha, ...)
 }
 
 palette_viridis <- function(...) {
-  function(n, alpha) viridis::viridis(n, alpha, ...)
+  function(n, alpha = 1) viridis::viridis(n, alpha, ...)
 }
 
 palette_blood <- function(...) {
