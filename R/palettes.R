@@ -62,7 +62,7 @@ palette_named <- function(name = NULL, ...) {
 }
 
 palette_rainbow <- function(...) {
-  function(n, alpha = 1) {rainbow(n = n, alpha = alpha, ...)}
+  function(n, alpha = 1) {grDevices::rainbow(n = n, alpha = alpha, ...)}
 }
 
 palette_scico <- function(...) {
@@ -74,7 +74,7 @@ palette_viridis <- function(...) {
 }
 
 palette_base <- function(...) {
-  named_colours <- sample(colours(), replace = TRUE)
+  named_colours <- sample(grDevices::colours(), replace = TRUE)
   function(n, alpha = 1) {
     grDevices::adjustcolor(named_colours[1:n], alpha.f = alpha)
   }
