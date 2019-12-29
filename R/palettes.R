@@ -8,7 +8,8 @@ palette_manual <- function(...) {
   colours <- c(...)
   palette <- function(n = 50, alpha = 1) {
     m <- ceiling(n/length(colours))
-    cols <- as.vector(t(replicate(m,colours)))
+    cols <- as.vector(t(replicate(m, colours)))
+    cols <- grDevices::adjustcolor(cols, alpha.f = 1)
     return(cols[1:n])
   }
   return(palette)
