@@ -32,7 +32,7 @@ palette_named <- function(name = NULL, ...) {
     "tokyo", "turku", "vik"
   )
   viridis_names <- c("magma", "inferno", "plasma", "viridis")
-  jasmine_names <- c("ropensci", "blood")
+  jasmine_names <- c("ropensci", "blood", "base")
   base_names <- c("rainbow")
   all_names <- sort(c(scico_names, viridis_names, jasmine_names, base_names))
 
@@ -54,6 +54,7 @@ palette_named <- function(name = NULL, ...) {
   if(name %in% jasmine_names) {
     if(name == "ropensci") return(palette_ropensci(...))
     if(name == "blood") return(palette_blood(...))
+    if(name == "base") return(palette_base(...))
   }
   if(name %in% base_names) {
     if(name == "rainbow") return(palette_rainbow(...))
@@ -70,6 +71,13 @@ palette_scico <- function(...) {
 
 palette_viridis <- function(...) {
   function(n, alpha = 1) viridis::viridis(n, alpha, ...)
+}
+
+palette_base <- function(...) {
+  named_colours <- sample(colours(), replace = TRUE)
+  function(n, alpha = 1) {
+    grDevices::adjustcolor(named_colours[1:n], alpha.f = alpha)
+  }
 }
 
 palette_blood <- function(...) {
