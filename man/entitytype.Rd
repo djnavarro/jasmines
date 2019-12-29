@@ -6,6 +6,7 @@
 \alias{entity_line}
 \alias{entity_heart}
 \alias{entity_droplet}
+\alias{entity_lissajous}
 \alias{entity_gaussian}
 \alias{entity_null}
 \title{Entity types}
@@ -18,6 +19,15 @@ entity_heart(grain = 50, id = NULL, ...)
 
 entity_droplet(grain = 50, id = NULL, shape = 3, ...)
 
+entity_lissajous(
+  grain = 500,
+  id = NULL,
+  start = 0,
+  end = 30,
+  shape = list(a = 1, b = 1, w = 0.3, d = 1),
+  ...
+)
+
 entity_gaussian(grain = 50, id = NULL, ...)
 
 entity_null(...)
@@ -29,7 +39,11 @@ entity_null(...)
 
 \item{...}{Parameters to be passed to locate_entity}
 
-\item{shape}{Parameter controlling the shape of the entity (droplet only)}
+\item{shape}{Parameter controlling the shape of the entity (droplet, lissajous)}
+
+\item{start}{Parameter controlling a start location for a line (lissajous)}
+
+\item{end}{Parameter controlling an end location for a line (lissajous)}
 }
 \value{
 A tibble with four columns: x, y, id and type
@@ -42,5 +56,6 @@ Primitive entities in jasmines are tibbles with four columns: x and y specify
 co-ordinate values, the id is a number identifying the object, and the type is
 a character label indicating what kind of entity it is. By default, entities are
 assigned a random integer as the id code, but it is often wise for the calling
-function to assign the id in a more predictable fashion.
+function to assign the id in a more predictable fashion. The shape parameter can sometimes
+be a list.
 }

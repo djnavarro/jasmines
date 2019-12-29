@@ -7,14 +7,17 @@
 #'
 #' @param grain The number of points that comprise the entity
 #' @param id A numeric identifier for the entity
-#' @param shape Parameter controlling the shape of the entity (droplet only)
+#' @param shape Parameter controlling the shape of the entity (droplet, lissajous)
+#' @param start Parameter controlling a start location for a line (lissajous)
+#' @param end Parameter controlling an end location for a line (lissajous)
 #' @param ... Parameters to be passed to locate_entity
 #'
 #' @details Primitive entities in jasmines are tibbles with four columns: x and y specify
 #' co-ordinate values, the id is a number identifying the object, and the type is
 #' a character label indicating what kind of entity it is. By default, entities are
 #' assigned a random integer as the id code, but it is often wise for the calling
-#' function to assign the id in a more predictable fashion.
+#' function to assign the id in a more predictable fashion. The shape parameter can sometimes
+#' be a list.
 #'
 #' @return A tibble with four columns: x, y, id and type
 #'
@@ -69,6 +72,20 @@ entity_droplet <- function(grain = 50, id = NULL, shape = 3, ...) {
   x <- x - mean(x)
   y <- y - mean(y)
   entity <- new_entity(x = x, y = y, id = id, type = "droplet")
+  entity <- locate_entity(entity, ...)
+  return(entity)
+}
+
+#' @export
+#' @rdname entitytype
+entity_lissajous <- function(grain = 500, id = NULL, start = 0, end = 30,
+                             shape = list(a = 1, b = 1, w = .3, d = 1), ...) {
+  t <- seq(start, end, length.out = grain)
+  x <- shape$a * sin(shape$w * t + shape$d)
+  y <- shape$b * sin(t)
+  x <- x - mean(x)
+  y <- y - mean(y)
+  entity <- new_entity(x = x, y = y, id = id, type = "lissajous")
   entity <- locate_entity(entity, ...)
   return(entity)
 }

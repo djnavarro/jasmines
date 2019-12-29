@@ -122,6 +122,15 @@
 
 <span class='fu'>entity_droplet</span>(<span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>shape</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='no'>...</span>)
 
+<span class='fu'>entity_lissajous</span>(
+  <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>500</span>,
+  <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>end</span> <span class='kw'>=</span> <span class='fl'>30</span>,
+  <span class='kw'>shape</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>w</span> <span class='kw'>=</span> <span class='fl'>0.3</span>, <span class='kw'>d</span> <span class='kw'>=</span> <span class='fl'>1</span>),
+  <span class='no'>...</span>
+)
+
 <span class='fu'>entity_gaussian</span>(<span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
 <span class='fu'>entity_null</span>(<span class='no'>...</span>)</pre>
@@ -143,7 +152,15 @@
     </tr>
     <tr>
       <th>shape</th>
-      <td><p>Parameter controlling the shape of the entity (droplet only)</p></td>
+      <td><p>Parameter controlling the shape of the entity (droplet, lissajous)</p></td>
+    </tr>
+    <tr>
+      <th>start</th>
+      <td><p>Parameter controlling a start location for a line (lissajous)</p></td>
+    </tr>
+    <tr>
+      <th>end</th>
+      <td><p>Parameter controlling an end location for a line (lissajous)</p></td>
     </tr>
     </table>
 
@@ -156,7 +173,8 @@
 co-ordinate values, the id is a number identifying the object, and the type is
 a character label indicating what kind of entity it is. By default, entities are
 assigned a random integer as the id code, but it is often wise for the calling
-function to assign the id in a more predictable fashion.</p>
+function to assign the id in a more predictable fashion. The shape parameter can sometimes
+be a list.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
