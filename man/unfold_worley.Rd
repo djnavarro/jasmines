@@ -4,7 +4,7 @@
 \alias{unfold_worley}
 \title{Colour points using Worley noise}
 \usage{
-unfold_worley(data, seed, output = "order", ...)
+unfold_worley(data, seed = NULL, output = "order", ...)
 }
 \arguments{
 \item{data}{the data object}

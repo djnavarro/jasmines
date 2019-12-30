@@ -18,6 +18,9 @@ unfold_tempest <- function(
   output2 = "order"
 ) {
 
+  # check for seed value
+  if(is.null(seed)) seed <- getOption("jasmines.seed")
+
   n <- nrow(data)
   data[[output1]] <- 1    # initial value for the "time" output
   data[[output2]] <- 1:n  # initial values for the "order" output

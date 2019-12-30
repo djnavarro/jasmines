@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Colour points using Worley noise — unfold_worley • jasmines</title>
+<title>Wrapper to set.seed — use_seed • jasmines</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Colour points using Worley noise — unfold_worley" />
-<meta property="og:description" content="Colour points using Worley noise" />
+<meta property="og:title" content="Wrapper to set.seed — use_seed" />
+<meta property="og:description" content="Wrapper to set.seed" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,44 +105,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Colour points using Worley noise</h1>
-    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/unfold_worley.R'><code>R/unfold_worley.R</code></a></small>
-    <div class="hidden name"><code>unfold_worley.Rd</code></div>
+    <h1>Wrapper to set.seed</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/helpers.R'><code>R/helpers.R</code></a></small>
+    <div class="hidden name"><code>use_seed.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Colour points using Worley noise</p>
+    <p>Wrapper to set.seed</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unfold_worley</span>(<span class='no'>data</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"order"</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>use_seed</span>(<span class='no'>seed</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>the data object</p></td>
-    </tr>
-    <tr>
       <th>seed</th>
-      <td><p>seed to pass to ambient::gen_worley()</p></td>
-    </tr>
-    <tr>
-      <th>output</th>
-      <td><p>name of the primary unfolding variable to add (e.g., order)</p></td>
+      <td><p>The seed number</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>arguments to pass to ambient::genworley()</p></td>
+      <td><p>Other arguments to set.seed()</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Calling use_seed has two side effects: it calls set.seed to set the
+seed for the RNG, and it also records the value of "seed" in as the "jasmine.seed"
+option. Once specified, any function in jasmines with a seed argument will use this
+value unless manually set by the user.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#details">Details</a></li>
     </ul>
 
   </div>

@@ -20,8 +20,8 @@ unfold_slice <- function(
 
   # parse the seed information
   if(is.null(seed)) {
-    seed_x <- NULL
-    seed_y <- NULL
+    seed_x <- getOption("jasmines.seed")
+    seed_y <- getOption("jasmines.seed")
   }
   if(length(seed) == 1) {
     seed_x <- seed
