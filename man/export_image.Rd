@@ -4,7 +4,15 @@
 \alias{export_image}
 \title{Export image to a file}
 \usage{
-export_image(input, filename, width = 10, height = 10, dpi = 300)
+export_image(
+  input,
+  filename,
+  width = 10,
+  height = 10,
+  dpi = 300,
+  xlim = NULL,
+  ylim = NULL
+)
 }
 \arguments{
 \item{input}{art object to print}
@@ -16,6 +24,10 @@ export_image(input, filename, width = 10, height = 10, dpi = 300)
 \item{height}{defaults to 3000 pixels (10in at 300dpi)}
 
 \item{dpi}{defaults to 300dpi}
+
+\item{xlim}{by default plot limits are c(-.05, 1.05), relative to data spanning c(0, 1), but can override}
+
+\item{ylim}{by default plot limits are c(-.05, 1.05), relative to data spanning c(0, 1), but can override}
 }
 \description{
 Export image to a file
