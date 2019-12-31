@@ -5,6 +5,7 @@
 #' @param discard how many iterations should we discard before drawing?
 #' @param alpha length two numeric, first element is the initial alpha, (optional) second is the decay rate for alpha
 #' @param palette function generating a palette (or string naming the palette)
+#' @param colour name of variable to use to specify the colour aesthetic
 #' @param background colour of the background in the plot
 #' @param type type of geom to use ("segment", "curve" or "point")
 #' @param ... arguments to pass to geom
@@ -14,6 +15,7 @@
 style_ribbon <- function(
   data,
   palette = "viridis",   # function to generate palette (args: n, alpha)
+  colour = "order",      # name of column to use as the colouring
   alpha = c(.3, 0),      # initial transparency and decay
   background = "black",
   discard = 0,           # how many of the iterations do we not draw?
@@ -22,6 +24,7 @@ style_ribbon <- function(
 ) {
 
   ribbon <- data
+  ribbon$order <- ribbon[[colour]]
 
   # use named paletee if the input is character
   if(is.character(palette)) {

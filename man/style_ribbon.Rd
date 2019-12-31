@@ -7,6 +7,7 @@
 style_ribbon(
   data,
   palette = "viridis",
+  colour = "order",
   alpha = c(0.3, 0),
   background = "black",
   discard = 0,
@@ -18,6 +19,8 @@ style_ribbon(
 \item{data}{data frame with x, y, order, id, time}
 
 \item{palette}{function generating a palette (or string naming the palette)}
+
+\item{colour}{name of variable to use to specify the colour aesthetic}
 
 \item{alpha}{length two numeric, first element is the initial alpha, (optional) second is the decay rate for alpha}
 
