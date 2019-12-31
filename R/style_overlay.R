@@ -4,11 +4,16 @@
 #' @param border Colour of border
 #' @param fill Colour of fill
 #' @param linewidth Width of border
+#' @param data Data to be shown in overlay (if NULL, taken from pic)
 #'
 #' @export
-style_overlay <- function(pic, border = NULL, fill = NULL, linewidth = 1) {
+style_overlay <- function(pic, border = NULL, fill = NULL, linewidth = 1, data = NULL) {
 
-  start <- dplyr::filter(pic$data, time == 1)
+  if(is.null(data)) {
+    start <- dplyr::filter(pic$data, time == 1)
+  } else {
+    start <- data
+  }
   fillcolour <- fill
 
   # add hollow fill for seed if requested

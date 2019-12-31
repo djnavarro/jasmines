@@ -4,7 +4,7 @@
 \alias{style_overlay}
 \title{Adds an overlay to the existing plot}
 \usage{
-style_overlay(pic, border = NULL, fill = NULL, linewidth = 1)
+style_overlay(pic, border = NULL, fill = NULL, linewidth = 1, data = NULL)
 }
 \arguments{
 \item{pic}{Existing plot}
@@ -14,6 +14,8 @@ style_overlay(pic, border = NULL, fill = NULL, linewidth = 1)
 \item{fill}{Colour of fill}
 
 \item{linewidth}{Width of border}
+
+\item{data}{Data to be shown in overlay (if NULL, taken from pic)}
 }
 \description{
 Adds an overlay to the existing plot
