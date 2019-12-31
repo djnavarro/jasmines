@@ -3,7 +3,7 @@
 #' @param data data frame with x, y, id, and more
 #' @param iterations how many times should we iterate the curl noise?
 #' @param scale how large is each curl step?
-#' @param seed seed to pass to curl_noise()
+#' @param scatter should the noise seed be "scattered"?
 #' @param output1 name of the primary unfolding variable to add (e.g., time)
 #' @param output2 name of the secondary unfolding variable to add (e.g., order)
 #'
@@ -13,13 +13,14 @@ unfold_tempest <- function(
   data = scene_sticks(), # seed points
   iterations = 6,       # how many iterations to curl?
   scale = .02,          # size of the curl step
-  seed = NULL,
+  scatter = FALSE,
   output1 = "time",
   output2 = "order"
 ) {
 
   # check for seed value
-  if(is.null(seed)) seed <- getOption("jasmines.seed")
+  if(scatter == FALSE) seed <- data$seed[1]
+  if(scatter == TRUE)  seed <- NULL
 
   n <- nrow(data)
   data[[output1]] <- 1    # initial value for the "time" output

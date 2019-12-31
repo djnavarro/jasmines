@@ -3,11 +3,8 @@
 #'
 #' @param data data frame with x, y, order, id, time
 #' @param burnin how many iterations should we discard as burnin?
-#' @param alpha_init how transparent is each line?
-#' @param alpha_decay how does transparency decay over iterations?
-#' @param seed_col what colour to draw the seed? (default: NULL)
-#' @param seed_fill what colour to fill the seed? (default: NULL)
-#' @param seed_linewidth width of the seed lines
+#' @param alpha length two numeric, first element is the initial alpha, (optional) second is the decay rate for alpha
+#' @param overlay list specifying overlay colour for scene borders, fill, and linewidth (missing elements will have default values)
 #' @param palette function generating a palette
 #' @param background colour of the background in the plot
 #' @param type type of geom to use ("segment", "curve" or "point")
@@ -17,19 +14,31 @@
 #' @export
 style_ribbon <- function(
   data,
-  burnin = 0,      # how many of the iterations do we not draw?
-  alpha_init = .3, # transparency of each line
-  alpha_decay = 0, # rate of decay
-  seed_col = NULL,
-  seed_fill = NULL,
-  seed_linewidth = 1,
-  palette = palette_viridis(), # function to generate palette (args: n, alpha)
+  palette = palette_named("viridis"),     # function to generate palette (args: n, alpha)
+  alpha = c(.3, 0), # initial transparency and decay
   background = "black",
+  overlay = list(border = NULL, fill = NULL, linewidth = 1),
+  burnin = 0,      # how many of the iterations do we not draw?
   type = "segment",
   ...
 ) {
 
   ribbon <- data
+
+  # rewrite parameters as their old names
+  alpha_init <- alpha[1]
+  if(length(alpha) > 1) {
+    alpha_decay <- alpha[2]
+  } else {
+    alpha_decat <- 0
+  }
+  seed_col <- overlay$border
+  seed_fill <- overlay$fill
+  if(is.null(overlay$linewidth)) {
+    seed_linewidth <- 1
+  } else {
+    seed_linewidth <- overlay$linewidth
+  }
 
   #supply a default order if the input lacks one
   if(!("order" %in% names(ribbon))) {

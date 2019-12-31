@@ -5,6 +5,7 @@
 \title{Create a scene that places randomly sampled entities}
 \usage{
 scene_mix(
+  seed = use_seed(1),
   n = 5,
   xpos = (1:20)/4,
   ypos = (1:20)/4,
@@ -16,6 +17,8 @@ scene_mix(
 )
 }
 \arguments{
+\item{seed}{Seed number to attach}
+
 \item{n}{Number of entities}
 
 \item{xpos}{Numeric vector specifying possible horizontal locations}

@@ -4,9 +4,11 @@
 \alias{scene_delaunay}
 \title{Generate seed points with a Delaunay triangulation}
 \usage{
-scene_delaunay(n = 20, grain = 50)
+scene_delaunay(seed = use_seed(1), n = 20, grain = 50)
 }
 \arguments{
+\item{seed}{The RNG seed}
+
 \item{n}{Number of vertices}
 
 \item{grain}{Number of points along each line}

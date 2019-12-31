@@ -3,7 +3,7 @@
 #' @param data data frame with x, y, id, and more
 #' @param iterations how many times should we iterate the curl noise?
 #' @param scale how large is each curl step?
-#' @param seed seed to pass to curl_noise()
+#' @param scatter should the noise seed be "scattered"?
 #' @param output1 name of the primary unfolding variable to add (e.g., time)
 #' @param output2 name of the secondary unfolding variable to add (e.g., order)
 #'
@@ -13,23 +13,18 @@ unfold_slice <- function(
   data = scene_sticks(), # seed points
   iterations = 6,        # how many iterations
   scale = .2,           # size of the worley step
-  seed = NULL,
+  scatter = FALSE,
   output1 = "time",
   output2 = "order"
 ) {
 
   # parse the seed information
-  if(is.null(seed)) {
-    seed_x <- getOption("jasmines.seed")
-    seed_y <- getOption("jasmines.seed")
-  }
-  if(length(seed) == 1) {
-    seed_x <- seed
-    seed_y <- seed
-  }
-  if(length(seed) > 1) {
-    seed_x <- seed[1]
-    seed_y <- seed[2]
+  if(!scatter) {
+    seed_x <- data$seed[1]
+    seed_y <- data$seed[1]
+  } else {
+    seed_x <- NULL
+    seed_y <- NULL
   }
 
   # initialise

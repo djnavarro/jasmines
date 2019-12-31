@@ -4,9 +4,11 @@
 \alias{scene_discs}
 \title{Seed shaped like concentric rings}
 \usage{
-scene_discs(points = 100, rings = 3, size = 2)
+scene_discs(seed = use_seed(1), points = 100, rings = 3, size = 2)
 }
 \arguments{
+\item{seed}{Seed number to attach}
+
 \item{points}{Total number of interior points}
 
 \item{rings}{How many rings to spread across?}

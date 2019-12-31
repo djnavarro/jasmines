@@ -5,6 +5,7 @@
 
 #' Entity types
 #'
+#' @param seed Parameter specifying seed (default = NULL)
 #' @param grain The number of points that comprise the entity
 #' @param id A numeric identifier for the entity
 #' @param shape Parameter controlling the shape of the entity (droplet, lissajous)
@@ -31,71 +32,72 @@ radians <- function(grain, closed = TRUE) {
 
 #' @export
 #' @rdname entitytype
-entity_circle <- function(grain = 50, id = NULL, ...) {
+entity_circle <- function(seed = use_seed(1), grain = 50, id = NULL, ...) {
   th <- radians(grain)
   x <- cos(th)/2
   y <- sin(th)/2
-  entity <- new_entity(x = x, y = y, id = id, type = "circle")
+  entity <- new_entity(x = x, y = y, id = id, seed = seed, type = "circle")
   entity <- locate_entity(entity, ...)
   return(entity)
 }
 
 #' @export
 #' @rdname entitytype
-entity_line <- function(grain = 50, id = NULL, ...) {
+entity_line <- function(seed = use_seed(1), grain = 50, id = NULL, ...) {
   x <- seq(-.5, .5, length.out = grain)
   y <- rep.int(0, times = grain)
-  entity <- new_entity(x = x, y = y, id = id, type = "line")
+  entity <- new_entity(x = x, y = y, id = id, seed = seed, type = "line")
   entity <- locate_entity(entity, ...)
   return(entity)
 }
 
 #' @export
 #' @rdname entitytype
-entity_heart <- function(grain = 50, id = NULL, ...) {
+entity_heart <- function(seed = use_seed(1), grain = 50, id = NULL, ...) {
   th <- radians(grain)
   x <- (16 * sin(th)^3) / 17
   y <- (13 * cos(th) - 5 * cos(2*th) - 2 * cos(3*th) - cos(4*th)) / 17
   x <- x - mean(x)
   y <- y - mean(y)
-  entity <- new_entity(x = x, y = y, id = id, type = "heart")
+  entity <- new_entity(x = x, y = y, id = id, seed = seed, type = "heart")
   entity <- locate_entity(entity, ...)
   return(entity)
 }
 
 #' @export
 #' @rdname entitytype
-entity_droplet <- function(grain = 50, id = NULL, shape = 3, ...) {
+entity_droplet <- function(seed = use_seed(1), grain = 50, id = NULL, shape = 3, ...) {
   th <- radians(grain)
   x <- sin(th) * (sin(th/2))^shape
   y <- cos(th)
   x <- x - mean(x)
   y <- y - mean(y)
-  entity <- new_entity(x = x, y = y, id = id, type = "droplet")
+  entity <- new_entity(x = x, y = y, id = id, seed = seed, type = "droplet")
   entity <- locate_entity(entity, ...)
   return(entity)
 }
 
 #' @export
 #' @rdname entitytype
-entity_lissajous <- function(grain = 500, id = NULL, start = 0, end = 30,
+entity_lissajous <- function(seed = use_seed(1), grain = 500, id = NULL, start = 0, end = 30,
                              shape = list(a = 1, b = 1, w = .3, d = 1), ...) {
   t <- seq(start, end, length.out = grain)
   x <- shape$a * sin(shape$w * t + shape$d)
   y <- shape$b * sin(t)
   x <- x - mean(x)
   y <- y - mean(y)
-  entity <- new_entity(x = x, y = y, id = id, type = "lissajous")
+  entity <- new_entity(x = x, y = y, id = id, seed = seed, type = "lissajous")
   entity <- locate_entity(entity, ...)
   return(entity)
 }
 
 #' @export
 #' @rdname entitytype
-entity_gaussian <- function(grain = 50, id = NULL, ...) {
+entity_gaussian <- function(seed = use_seed(1), grain = 50, id = NULL, ...) {
+  set.seed(seed)
   x <- stats::rnorm(n = grain)
   y <- stats::rnorm(n = grain)
-  entity <- new_entity(x = x, y = y, id = id, type = "gaussian")
+  entity <- new_entity(x = x, y = y, id = id, seed = seed, type = "gaussian")
   entity <- locate_entity(entity, ...)
   return(entity)
 }
@@ -103,9 +105,9 @@ entity_gaussian <- function(grain = 50, id = NULL, ...) {
 
 #' @export
 #' @rdname entitytype
-entity_null <- function(...) {
+entity_null <- function(seed = use_seed(1), ...) {
   entity <- new_entity(x = numeric(0), y = numeric(0),
-                       id = numeric(0), type = "null")
+                       id = numeric(0), type = "null", seed = numeric(0))
   return(entity)
 }
 
@@ -148,7 +150,7 @@ locate_entity <- function(entity, xpos = 0, ypos = 0, size = 1, angle = 0, ...) 
 
 # entity constructor ------------------------------------------------------
 
-new_entity <- function(x, y, id = NULL, type = NULL) {
+new_entity <- function(x, y, id = NULL, type = NULL, seed = NULL) {
 
   # set default values for id & type
   if(is.null(id)) id <- round(stats::runif(1) * 1000000)
@@ -174,7 +176,7 @@ new_entity <- function(x, y, id = NULL, type = NULL) {
   if(!is.numeric(id)) {stop("`id` code for a jasmine entity must be numeric", call. = FALSE)}
 
   # construct the object and return
-  entity <- tibble::tibble(x = x, y = y, ind = 1:length(x), id = id, type = type)
+  entity <- tibble::tibble(x = x, y = y, ind = 1:length(x), id = id, type = type, seed = seed)
   return(entity)
 }
 

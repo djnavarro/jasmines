@@ -5,6 +5,7 @@
 \title{Create a scene with multiple entities laid out in a grid}
 \usage{
 scene_grid(
+  seed = use_seed(1),
   xpos = 1:3,
   ypos = 1:3,
   entity = "circle",
@@ -15,6 +16,8 @@ scene_grid(
 )
 }
 \arguments{
+\item{seed}{Seed number to attach}
+
 \item{xpos}{Numeric vector specifying horizontal locations}
 
 \item{ypos}{Numeric vector specifying vertical locations}

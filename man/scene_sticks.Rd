@@ -4,9 +4,11 @@
 \alias{scene_sticks}
 \title{Scene from a set of random sticks}
 \usage{
-scene_sticks(n = 10, grain = 100)
+scene_sticks(seed = use_seed(1), n = 10, grain = 100)
 }
 \arguments{
+\item{seed}{Seed number to attach}
+
 \item{n}{how many sticks}
 
 \item{grain}{how many points along each stick}

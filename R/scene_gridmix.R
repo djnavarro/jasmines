@@ -20,6 +20,7 @@ entify <- function(.x) {
 
 #' Create a scene with multiple entities laid out in a grid
 #'
+#' @param seed Seed number to attach
 #' @param xpos Numeric vector specifying horizontal locations
 #' @param ypos Numeric vector specifying vertical locations
 #' @param entity The entity type (e.g., "line", "circle")
@@ -33,6 +34,7 @@ entify <- function(.x) {
 #' included in the initial object, laying out items in grid.
 #' @export
 scene_grid <- function(
+  seed = use_seed(1),
   xpos = 1:3,
   ypos = 1:3,
   entity = "circle",
@@ -65,6 +67,7 @@ scene_grid <- function(
   sc$size <- size
   sc$angle <- angle
   sc$shape <- shape
+  sc$seed <- seed
 
   # map
   sc <- purrr::transpose(sc)
@@ -77,6 +80,7 @@ scene_grid <- function(
 
 #' Create a scene that places randomly sampled entities
 #'
+#' @param seed Seed number to attach
 #' @param n Number of entities
 #' @param xpos Numeric vector specifying possible horizontal locations
 #' @param ypos Numeric vector specifying possible vertical locations
@@ -89,6 +93,7 @@ scene_grid <- function(
 #' @return A tibble with four columns: x, y, id and type
 #' @export
 scene_mix <- function(
+  seed = use_seed(1),
   n = 5,
   xpos = (1:20)/4,
   ypos = (1:20)/4,
@@ -120,7 +125,8 @@ scene_mix <- function(
     grain  = do_sample(grain, size = n),
     size   = do_sample(size,  size = n),
     shape  = do_sample(shape, size = n),
-    angle  = do_sample(angle, size = n)
+    angle  = do_sample(angle, size = n),
+    seed   = seed
   )
   sc$id <- 1:nrow(sc)
 

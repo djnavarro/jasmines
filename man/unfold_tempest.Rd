@@ -8,7 +8,7 @@ unfold_tempest(
   data = scene_sticks(),
   iterations = 6,
   scale = 0.02,
-  seed = NULL,
+  scatter = FALSE,
   output1 = "time",
   output2 = "order"
 )
@@ -20,7 +20,7 @@ unfold_tempest(
 
 \item{scale}{how large is each curl step?}
 
-\item{seed}{seed to pass to curl_noise()}
+\item{scatter}{should the noise seed be "scattered"?}
 
 \item{output1}{name of the primary unfolding variable to add (e.g., time)}
 

@@ -4,12 +4,12 @@
 \alias{unfold_worley}
 \title{Colour points using Worley noise}
 \usage{
-unfold_worley(data, seed = NULL, output = "order", ...)
+unfold_worley(data, scatter = FALSE, output = "order", ...)
 }
 \arguments{
 \item{data}{the data object}
 
-\item{seed}{seed to pass to ambient::gen_worley()}
+\item{scatter}{should the noise seed be "scattered"?}
 
 \item{output}{name of the primary unfolding variable to add (e.g., order)}
 

@@ -1,17 +1,12 @@
 
 #' Wrapper to set.seed
 #'
-#' @param seed The seed number
-#' @param ... Other arguments to set.seed()
+#' @param seed the seed value
 #'
-#' @details Calling use_seed has two side effects: it calls set.seed to set the
-#' seed for the RNG, and it also records the value of "seed" in as the "jasmine.seed"
-#' option. Once specified, any function in jasmines with a seed argument will use this
-#' value unless manually set by the user.
 #' @export
-use_seed <- function(seed, ...) {
-  options(jasmines.seed = seed)
-  set.seed(seed,...)
+use_seed <- function(seed = 1) {
+  set.seed(seed)
+  return(seed)
 }
 
 # Theme that supplies a background colour only

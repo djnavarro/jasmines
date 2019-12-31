@@ -4,9 +4,11 @@
 \alias{scene_rows}
 \title{Seed with evenly spaced rows}
 \usage{
-scene_rows(n = 10, grain = 100, vertical = FALSE)
+scene_rows(seed = use_seed(1), n = 10, grain = 100, vertical = FALSE)
 }
 \arguments{
+\item{seed}{Seed number to attach}
+
 \item{n}{Number of rows}
 
 \item{grain}{The number of points per row}
@@ -14,7 +16,7 @@ scene_rows(n = 10, grain = 100, vertical = FALSE)
 \item{vertical}{Flip the x/y co-ords to produce columns?}
 }
 \value{
-A tibble with four columns: x, y, id and type
+A tibble with columns: x, y, id, type, seed
 }
 \description{
 Seed with evenly spaced rows

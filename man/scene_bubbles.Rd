@@ -4,9 +4,11 @@
 \alias{scene_bubbles}
 \title{Seed with a random set of bubbles}
 \usage{
-scene_bubbles(n = 2, grain = 100)
+scene_bubbles(seed = use_seed(1), n = 2, grain = 100)
 }
 \arguments{
+\item{seed}{Seed number to attach}
+
 \item{n}{Number of circles}
 
 \item{grain}{The number of points per row}

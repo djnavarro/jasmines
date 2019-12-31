@@ -1,11 +1,12 @@
 #' Generate seed points with a Delaunay triangulation
 #'
+#' @param seed The RNG seed
 #' @param n Number of vertices
 #' @param grain Number of points along each line
 #'
 #' @return A tibble with four columns: x, y, id and type
 #' @export
-scene_delaunay <- function(n = 20, grain = 50) {
+scene_delaunay <- function(seed = use_seed(1), n = 20, grain = 50) {
 
 	# create the delaunay tiling
 	points <- spatstat::runifpoint(n)
@@ -34,6 +35,7 @@ scene_delaunay <- function(n = 20, grain = 50) {
 	del <- purrr::transpose(del)
 	del <- purrr::map2_dfr(del[-1], del[-length(del)], interp)
 	del$type <- "triangle"
+  del$seed <- seed
 
 	return(del)
 

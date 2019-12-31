@@ -1,11 +1,12 @@
 
 #' Seed shaped like concentric rings
 #'
+#' @param seed Seed number to attach
 #' @param points Total number of interior points
 #' @param rings How many rings to spread across?
 #' @param size Diameter of the outermost ring
 #' @export
-scene_discs <- function(points = 100, rings = 3, size = 2) {
+scene_discs <- function(seed = use_seed(1), points = 100, rings = 3, size = 2) {
   radius <- (size/2) * (1:rings)/rings
   circumference <- 2 * pi * radius
   proportion <- circumference / sum(circumference)
@@ -22,23 +23,25 @@ scene_discs <- function(points = 100, rings = 3, size = 2) {
     ))
   }
 
-  seed <- purrr::pmap_dfr(
+  points <- purrr::pmap_dfr(
     .l = list(radius, counts, 1:length(radius)),
     .f = unfold
   )
-  seed$type <- "circle"
-  return(seed)
+  points$type <- "circle"
+  points$seed <- seed
+  return(points)
 }
 
 
 #' Scene from a set of random sticks
 #'
+#' @param seed Seed number to attach
 #' @param n how many sticks
 #' @param grain how many points along each stick
 #'
 #' @return a tibble with columns x, y and id
 #' @export
-scene_sticks <- function(n = 10, grain = 100) {
+scene_sticks <- function(seed = use_seed(1), n = 10, grain = 100) {
   make_stick <- function(id, grain) {
     return(tibble::tibble(
       x = seq(stats::runif(1), stats::runif(1), length.out = grain),
@@ -48,19 +51,21 @@ scene_sticks <- function(n = 10, grain = 100) {
   }
   points <- purrr::map_dfr(1:n, make_stick, grain = grain)
   points$type <- "line"
+  points$seed <- seed
   return(points)
 }
 
 
 #' Seed with evenly spaced rows
 #'
+#' @param seed Seed number to attach
 #' @param n Number of rows
 #' @param grain The number of points per row
 #' @param vertical Flip the x/y co-ords to produce columns?
 #'
-#' @return A tibble with four columns: x, y, id and type
+#' @return A tibble with columns: x, y, id, type, seed
 #' @export
-scene_rows <- function(n = 10, grain = 100, vertical = FALSE) {
+scene_rows <- function(seed = use_seed(1), n = 10, grain = 100, vertical = FALSE) {
   make_row <- function(id, grain, vertical = FALSE) {
     if(!vertical) {
     return(tibble::tibble(
@@ -78,18 +83,20 @@ scene_rows <- function(n = 10, grain = 100, vertical = FALSE) {
   }
   points <- purrr::map_dfr(1:n, make_row, grain = grain, vertical = vertical)
   points$type <- "line"
+  points$seed <- seed
   return(points)
 }
 
 
 #' Seed with a random set of bubbles
 #'
+#' @param seed Seed number to attach
 #' @param n Number of circles
 #' @param grain The number of points per row
 #'
 #' @return A tibble with four columns: x, y, id and type
 #' @export
-scene_bubbles <- function(n = 2, grain = 100) {
+scene_bubbles <- function(seed = use_seed(1), n = 2, grain = 100) {
 
   make_bubble <- function(id, grain) {
 
@@ -107,6 +114,7 @@ scene_bubbles <- function(n = 2, grain = 100) {
 
   points <- purrr::map_dfr(1:n, make_bubble, grain = grain)
   points$type <- "circle"
+  points$seed <- seed
   return(points)
 }
 

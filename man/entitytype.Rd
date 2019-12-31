@@ -11,15 +11,16 @@
 \alias{entity_null}
 \title{Entity types}
 \usage{
-entity_circle(grain = 50, id = NULL, ...)
+entity_circle(seed = use_seed(1), grain = 50, id = NULL, ...)
 
-entity_line(grain = 50, id = NULL, ...)
+entity_line(seed = use_seed(1), grain = 50, id = NULL, ...)
 
-entity_heart(grain = 50, id = NULL, ...)
+entity_heart(seed = use_seed(1), grain = 50, id = NULL, ...)
 
-entity_droplet(grain = 50, id = NULL, shape = 3, ...)
+entity_droplet(seed = use_seed(1), grain = 50, id = NULL, shape = 3, ...)
 
 entity_lissajous(
+  seed = use_seed(1),
   grain = 500,
   id = NULL,
   start = 0,
@@ -28,11 +29,13 @@ entity_lissajous(
   ...
 )
 
-entity_gaussian(grain = 50, id = NULL, ...)
+entity_gaussian(seed = use_seed(1), grain = 50, id = NULL, ...)
 
-entity_null(...)
+entity_null(seed = use_seed(1), ...)
 }
 \arguments{
+\item{seed}{Parameter specifying seed (default = NULL)}
+
 \item{grain}{The number of points that comprise the entity}
 
 \item{id}{A numeric identifier for the entity}

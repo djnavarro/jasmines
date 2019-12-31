@@ -6,14 +6,11 @@
 \usage{
 style_ribbon(
   data,
-  burnin = 0,
-  alpha_init = 0.3,
-  alpha_decay = 0,
-  seed_col = NULL,
-  seed_fill = NULL,
-  seed_linewidth = 1,
-  palette = palette_viridis(),
+  palette = palette_named("viridis"),
+  alpha = c(0.3, 0),
   background = "black",
+  overlay = list(border = NULL, fill = NULL, linewidth = 1),
+  burnin = 0,
   type = "segment",
   ...
 )
@@ -21,21 +18,15 @@ style_ribbon(
 \arguments{
 \item{data}{data frame with x, y, order, id, time}
 
-\item{burnin}{how many iterations should we discard as burnin?}
-
-\item{alpha_init}{how transparent is each line?}
-
-\item{alpha_decay}{how does transparency decay over iterations?}
-
-\item{seed_col}{what colour to draw the seed? (default: NULL)}
-
-\item{seed_fill}{what colour to fill the seed? (default: NULL)}
-
-\item{seed_linewidth}{width of the seed lines}
-
 \item{palette}{function generating a palette}
 
+\item{alpha}{length two numeric, first element is the initial alpha, (optional) second is the decay rate for alpha}
+
 \item{background}{colour of the background in the plot}
+
+\item{overlay}{list specifying overlay colour for scene borders, fill, and linewidth (missing elements will have default values)}
+
+\item{burnin}{how many iterations should we discard as burnin?}
 
 \item{type}{type of geom to use ("segment", "curve" or "point")}
 
