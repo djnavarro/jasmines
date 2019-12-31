@@ -114,11 +114,15 @@
     <p>Seed with evenly spaced rows</p>
     </div>
 
-    <pre class="usage"><span class='fu'>scene_rows</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>vertical</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>scene_rows</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='use_seed.html'>use_seed</a></span>(<span class='fl'>1</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>vertical</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>seed</th>
+      <td><p>Seed number to attach</p></td>
+    </tr>
     <tr>
       <th>n</th>
       <td><p>Number of rows</p></td>
@@ -135,7 +139,7 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble with four columns: x, y, id and type</p>
+    <p>A tibble with columns: x, y, id, type, seed</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

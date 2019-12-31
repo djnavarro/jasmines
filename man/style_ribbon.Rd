@@ -9,7 +9,6 @@ style_ribbon(
   palette = palette_named("viridis"),
   alpha = c(0.3, 0),
   background = "black",
-  overlay = list(border = NULL, fill = NULL, linewidth = 1),
   burnin = 0,
   type = "segment",
   ...
@@ -23,8 +22,6 @@ style_ribbon(
 \item{alpha}{length two numeric, first element is the initial alpha, (optional) second is the decay rate for alpha}
 
 \item{background}{colour of the background in the plot}
-
-\item{overlay}{list specifying overlay colour for scene borders, fill, and linewidth (missing elements will have default values)}
 
 \item{burnin}{how many iterations should we discard as burnin?}
 

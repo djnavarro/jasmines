@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate a tempest object — unfold_slice • jasmines</title>
+<title>Adds an overlay to the existing plot — style_overlay • jasmines</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Generate a tempest object — unfold_slice" />
-<meta property="og:description" content="Generate a tempest object" />
+<meta property="og:title" content="Adds an overlay to the existing plot — style_overlay" />
+<meta property="og:description" content="Adds an overlay to the existing plot" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,63 +105,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate a tempest object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/unfold_slice.R'><code>R/unfold_slice.R</code></a></small>
-    <div class="hidden name"><code>unfold_slice.Rd</code></div>
+    <h1>Adds an overlay to the existing plot</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/style_overlay.R'><code>R/style_overlay.R</code></a></small>
+    <div class="hidden name"><code>style_overlay.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Generate a tempest object</p>
+    <p>Adds an overlay to the existing plot</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unfold_slice</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='scene_sticks.html'>scene_sticks</a></span>(),
-  <span class='kw'>iterations</span> <span class='kw'>=</span> <span class='fl'>6</span>,
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.2</span>,
-  <span class='kw'>scatter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>output1</span> <span class='kw'>=</span> <span class='st'>"time"</span>,
-  <span class='kw'>output2</span> <span class='kw'>=</span> <span class='st'>"order"</span>
-)</pre>
+    <pre class="usage"><span class='fu'>style_overlay</span>(<span class='no'>pic</span>, <span class='kw'>border</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>linewidth</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>data frame with x, y, id, and more</p></td>
+      <th>pic</th>
+      <td><p>Existing plot</p></td>
     </tr>
     <tr>
-      <th>iterations</th>
-      <td><p>how many times should we iterate the curl noise?</p></td>
+      <th>border</th>
+      <td><p>Colour of border</p></td>
     </tr>
     <tr>
-      <th>scale</th>
-      <td><p>how large is each curl step?</p></td>
+      <th>fill</th>
+      <td><p>Colour of fill</p></td>
     </tr>
     <tr>
-      <th>scatter</th>
-      <td><p>should the noise seed be "scattered"?</p></td>
-    </tr>
-    <tr>
-      <th>output1</th>
-      <td><p>name of the primary unfolding variable to add (e.g., time)</p></td>
-    </tr>
-    <tr>
-      <th>output2</th>
-      <td><p>name of the secondary unfolding variable to add (e.g., order)</p></td>
+      <th>linewidth</th>
+      <td><p>Width of border</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>a "tempest" ribbon, data frame with x, y, order, time and id</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
     </ul>
 
   </div>

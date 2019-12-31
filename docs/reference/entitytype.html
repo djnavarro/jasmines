@@ -114,15 +114,16 @@
     <p>Entity types</p>
     </div>
 
-    <pre class="usage"><span class='fu'>entity_circle</span>(<span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>entity_circle</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='use_seed.html'>use_seed</a></span>(<span class='fl'>1</span>), <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
-<span class='fu'>entity_line</span>(<span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+<span class='fu'>entity_line</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='use_seed.html'>use_seed</a></span>(<span class='fl'>1</span>), <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
-<span class='fu'>entity_heart</span>(<span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+<span class='fu'>entity_heart</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='use_seed.html'>use_seed</a></span>(<span class='fl'>1</span>), <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
-<span class='fu'>entity_droplet</span>(<span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>shape</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='no'>...</span>)
+<span class='fu'>entity_droplet</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='use_seed.html'>use_seed</a></span>(<span class='fl'>1</span>), <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>shape</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='no'>...</span>)
 
 <span class='fu'>entity_lissajous</span>(
+  <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='use_seed.html'>use_seed</a></span>(<span class='fl'>1</span>),
   <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>500</span>,
   <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>,
@@ -131,13 +132,17 @@
   <span class='no'>...</span>
 )
 
-<span class='fu'>entity_gaussian</span>(<span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+<span class='fu'>entity_gaussian</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='use_seed.html'>use_seed</a></span>(<span class='fl'>1</span>), <span class='kw'>grain</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
-<span class='fu'>entity_null</span>(<span class='no'>...</span>)</pre>
+<span class='fu'>entity_null</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='use_seed.html'>use_seed</a></span>(<span class='fl'>1</span>), <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>seed</th>
+      <td><p>Parameter specifying seed (default = NULL)</p></td>
+    </tr>
     <tr>
       <th>grain</th>
       <td><p>The number of points that comprise the entity</p></td>
