@@ -9,7 +9,7 @@ style_ribbon(
   palette = palette_named("viridis"),
   alpha = c(0.3, 0),
   background = "black",
-  burnin = 0,
+  discard = 0,
   type = "segment",
   ...
 )
@@ -23,7 +23,7 @@ style_ribbon(
 
 \item{background}{colour of the background in the plot}
 
-\item{burnin}{how many iterations should we discard as burnin?}
+\item{discard}{how many iterations should we discard before drawing?}
 
 \item{type}{type of geom to use ("segment", "curve" or "point")}
 

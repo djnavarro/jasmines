@@ -2,7 +2,7 @@
 #' Style as a ribbon image
 #'
 #' @param data data frame with x, y, order, id, time
-#' @param burnin how many iterations should we discard as burnin?
+#' @param discard how many iterations should we discard before drawing?
 #' @param alpha length two numeric, first element is the initial alpha, (optional) second is the decay rate for alpha
 #' @param palette function generating a palette
 #' @param background colour of the background in the plot
@@ -16,7 +16,7 @@ style_ribbon <- function(
   palette = palette_named("viridis"),   # function to generate palette (args: n, alpha)
   alpha = c(.3, 0),                     # initial transparency and decay
   background = "black",
-  burnin = 0,                           # how many of the iterations do we not draw?
+  discard = 0,                          # how many of the iterations do we not draw?
   type = "segment",
   ...
 ) {
@@ -30,6 +30,7 @@ style_ribbon <- function(
   } else {
     alpha_decay <- 0
   }
+  burnin <- discard
 
   #supply a default order if the input lacks one
   if(!("order" %in% names(ribbon))) {
