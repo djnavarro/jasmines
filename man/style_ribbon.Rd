@@ -6,7 +6,7 @@
 \usage{
 style_ribbon(
   data,
-  palette = palette_named("viridis"),
+  palette = "viridis",
   alpha = c(0.3, 0),
   background = "black",
   discard = 0,
@@ -17,7 +17,7 @@ style_ribbon(
 \arguments{
 \item{data}{data frame with x, y, order, id, time}
 
-\item{palette}{function generating a palette}
+\item{palette}{function generating a palette (or string naming the palette)}
 
 \item{alpha}{length two numeric, first element is the initial alpha, (optional) second is the decay rate for alpha}
 
