@@ -16,6 +16,26 @@ palette_manual <- function(...) {
 }
 
 
+#' Use an adjusted palette
+#'
+#' @param name Name of the base palette
+#' @param prefix Vector of colours to preprend to the named palette
+#' @param ... Arguments to be passed to grDevices::adjustcolor
+#'
+#' @return A modified
+#' @export
+#'
+palette_adjust <- function(name, prefix, ...) {
+  adjust <- list(...)
+  return(function(n, alpha = 1, ...) {
+    pal <- palette_named(name)
+    adjust$col <- pal(n = n-length(prefix), alpha = alpha, ...)
+    suffix <- do.call(what = grDevices::adjustcolor, args = adjust)
+    return(c(prefix, suffix))
+  })
+}
+
+
 #' Function factory for prespecified palettes
 #'
 #' @param name name of the palette
@@ -83,9 +103,9 @@ palette_base <- function(...) {
 
 palette_blood <- function(...) {
   return(palette_manual(
-      "#7c0a02", "#92000a", "#880000", "#8a0303", "#8a0303", "#740707",
-      "#560e07", "#490805", "#400303", "#220000", "#b00000", "#660000",
-      "#7e3517"
+    "#7c0a02", "#92000a", "#880000", "#8a0303", "#8a0303", "#740707",
+    "#560e07", "#490805", "#400303", "#220000", "#b00000", "#660000",
+    "#7e3517"
   ))
 }
 
