@@ -7,11 +7,10 @@
 as_hex(
   from,
   to,
-  background = "#ffffff00",
-  crop = 1,
-  text = NULL,
+  text_label = NULL,
   text_colour = "white",
-  text_size = 50
+  border_colour = "grey20",
+  border_opacity = 60
 )
 }
 \arguments{
@@ -19,13 +18,13 @@ as_hex(
 
 \item{to}{Path to destination file}
 
+\item{text_colour}{Colour of text annotation}
+
 \item{background}{Background colour}
 
 \item{crop}{Proportion of (smaller dimension of) image to crop to}
 
 \item{text}{Text annotation}
-
-\item{text_colour}{Colour of text annotation}
 }
 \description{
 Convert image to hex
