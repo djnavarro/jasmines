@@ -43,6 +43,8 @@ use_seed(1) %>%
   style_ribbon(background = "wheat")
 ```
 
+The `use_seed()` function is a convenience function that sets the random number generator seed, and stores that value for later use. The seed is then piped to an `entity_` function (or a `scene_` function) that creates the initial object that will be operated upon. In this case this initial object is a circle of diameter 2 rendered using 1000 points. This is then passed to an `unfold_` function, that iteratively applies some operation (in this case the "warp") operation for some number of steps (in this case 100). The object is converted to a ggplot2 image using one of the `style_` functions. In this and most cases the `style_ribbon()` is used and has several customisable finctions. 
+
 ## Example 2
 
 ```{r example2}
@@ -51,8 +53,6 @@ use_seed(1) %>%
   unfold_warp(iterations = 100) %>%
   style_ribbon(palette = "rainbow")
 ```
-
-The `use_seed()` function is a convenience function that sets the random number generator seed, and stores that value for later use. The seed is then piped to an `entity_` function (or a `scene_` function) that creates the initial object that will be operated upon. In this case this initial object is a circle of diameter 2 rendered using 1000 points. This is then passed to an `unfold_` function, that iteratively applies some operation (in this case the "warp") operation for some number of steps (in this case 100). The object is converted to a ggplot2 image using one of the `style_` functions. In this and most cases the `style_ribbon()` is used and has several customisable finctions. 
 
 ## Example 3
 

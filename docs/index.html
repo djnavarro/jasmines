@@ -71,7 +71,74 @@
 <a href="#jasmines" class="anchor"></a>jasmines</h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"djnavarro/jasmines"</span>)</a></code></pre></div>
+<p>The jasmines package is what I use to make a lot of my generative artwork with R. Internally it relies heavily on the <a href="https://github.com/thomasp85/ambient">ambient</a> package, and you may need to install the developer version of ambient to make it work:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co"># remotes::install_github("thomasp85/ambient")</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"djnavarro/jasmines"</span>)</a></code></pre></div>
+<p>Functions in the jasmines package are designed to work with the dplyr pipe, so you will likely want to have dplyr loaded:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(jasmines)</a></code></pre></div>
+<div id="example-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example-1" class="anchor"></a>Example 1</h2>
+<p>A typical jasmines pipeline looks like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="reference/use_seed.html">use_seed</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="reference/entitytype.html">entity_circle</a></span>(<span class="dt">grain =</span> <span class="dv">1000</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="reference/unfold_tempest.html">unfold_tempest</a></span>(<span class="dt">iterations =</span> <span class="dv">10</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="reference/style_ribbon.html">style_ribbon</a></span>(<span class="dt">background =</span> <span class="st">"wheat"</span>)</a></code></pre></div>
+<p><img src="reference/figures/README-example1-1.png" width="100%"></p>
+<p>The <code><a href="reference/use_seed.html">use_seed()</a></code> function is a convenience function that sets the random number generator seed, and stores that value for later use. The seed is then piped to an <code>entity_</code> function (or a <code>scene_</code> function) that creates the initial object that will be operated upon. In this case this initial object is a circle of diameter 2 rendered using 1000 points. This is then passed to an <code>unfold_</code> function, that iteratively applies some operation (in this case the “warp”) operation for some number of steps (in this case 100). The object is converted to a ggplot2 image using one of the <code>style_</code> functions. In this and most cases the <code><a href="reference/style_ribbon.html">style_ribbon()</a></code> is used and has several customisable finctions.</p>
+</div>
+<div id="example-2" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example-2" class="anchor"></a>Example 2</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="reference/use_seed.html">use_seed</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="reference/entitytype.html">entity_circle</a></span>(<span class="dt">grain =</span> <span class="dv">1000</span>, <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="reference/unfold_warp.html">unfold_warp</a></span>(<span class="dt">iterations =</span> <span class="dv">100</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="reference/style_ribbon.html">style_ribbon</a></span>(<span class="dt">palette =</span> <span class="st">"rainbow"</span>)</a></code></pre></div>
+<p><img src="reference/figures/README-example2-1.png" width="100%"></p>
+</div>
+<div id="example-3" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example-3" class="anchor"></a>Example 3</h2>
+<p>An example where the initial object is created with <code><a href="reference/entitytype.html">entity_heart()</a></code>, the unfolding performed by <code><a href="reference/unfold_slice.html">unfold_slice()</a></code> and the styling is more elaborate.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="reference/use_seed.html">use_seed</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="reference/entitytype.html">entity_heart</a></span>(<span class="dt">grain =</span> <span class="dv">1000</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="reference/unfold_slice.html">unfold_slice</a></span>(<span class="dt">iterations =</span> <span class="dv">10</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="reference/style_ribbon.html">style_ribbon</a></span>(</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">    <span class="dt">palette =</span> <span class="st">"base"</span>, </a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="dt">colour =</span> <span class="st">"ind"</span>, </a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">    <span class="dt">background =</span> <span class="st">"mistyrose"</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">  ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="reference/style_overlay.html">style_overlay</a></span>(<span class="dt">border =</span> <span class="st">"white"</span>)</a></code></pre></div>
+<p><img src="reference/figures/README-example3-1.png" width="100%"></p>
+</div>
+<div id="example-4" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example-4" class="anchor"></a>Example 4</h2>
+<p>It is possible to create “scenes” comprised of multiple entities as the initial starting point, apply multiple unfolding operations, and modify the way transparency and colouring is done.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="reference/use_seed.html">use_seed</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="reference/scene_discs.html">scene_discs</a></span>(</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">    <span class="dt">rings =</span> <span class="dv">3</span>, <span class="dt">points =</span> <span class="dv">5000</span>, <span class="dt">size =</span> <span class="dv">5</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">  ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">ind =</span> <span class="dv">1</span><span class="op">:</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="reference/unfold_warp.html">unfold_warp</a></span>(</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">    <span class="dt">iterations =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">    <span class="dt">scale =</span> <span class="fl">.5</span>, </a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">    <span class="dt">output =</span> <span class="st">"layer"</span> </a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">  ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="reference/unfold_tempest.html">unfold_tempest</a></span>(</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">    <span class="dt">iterations =</span> <span class="dv">20</span>,</a>
+<a class="sourceLine" id="cb6-13" data-line-number="13">    <span class="dt">scale =</span> <span class="fl">.01</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">  ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="st">  </span><span class="kw"><a href="reference/style_ribbon.html">style_ribbon</a></span>(</a>
+<a class="sourceLine" id="cb6-16" data-line-number="16">    <span class="dt">palette =</span> <span class="kw"><a href="reference/palette_named.html">palette_named</a></span>(<span class="st">"vik"</span>),</a>
+<a class="sourceLine" id="cb6-17" data-line-number="17">    <span class="dt">colour =</span> <span class="st">"ind"</span>,</a>
+<a class="sourceLine" id="cb6-18" data-line-number="18">    <span class="dt">alpha =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(.<span class="dv">1</span>,.<span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb6-19" data-line-number="19">    <span class="dt">background =</span> <span class="st">"oldlace"</span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20">  )</a></code></pre></div>
+<p><img src="reference/figures/README-example4-1.png" width="100%"></p>
+</div>
 </div>
   </div>
 

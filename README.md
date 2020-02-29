@@ -39,17 +39,6 @@ use_seed(1) %>%
 
 <img src="man/figures/README-example1-1.png" width="100%" />
 
-## Example 2
-
-``` r
-use_seed(1) %>%
-  entity_circle(grain = 1000, size = 2) %>%
-  unfold_warp(iterations = 100) %>%
-  style_ribbon(palette = "rainbow")
-```
-
-<img src="man/figures/README-example2-1.png" width="100%" />
-
 The `use_seed()` function is a convenience function that sets the random
 number generator seed, and stores that value for later use. The seed is
 then piped to an `entity_` function (or a `scene_` function) that
@@ -60,6 +49,17 @@ some operation (in this case the “warp”) operation for some number of
 steps (in this case 100). The object is converted to a ggplot2 image
 using one of the `style_` functions. In this and most cases the
 `style_ribbon()` is used and has several customisable finctions.
+
+## Example 2
+
+``` r
+use_seed(1) %>%
+  entity_circle(grain = 1000, size = 2) %>%
+  unfold_warp(iterations = 100) %>%
+  style_ribbon(palette = "rainbow")
+```
+
+<img src="man/figures/README-example2-1.png" width="100%" />
 
 ## Example 3
 
