@@ -1,4 +1,4 @@
-#' Colour points using Worley noise
+#' Unfold a scene with a worley operation
 #'
 #' @param data the data object
 #' @param scatter should the noise seed be "scattered"?

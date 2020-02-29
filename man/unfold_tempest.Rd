@@ -2,7 +2,7 @@
 % Please edit documentation in R/unfold_tempest.R
 \name{unfold_tempest}
 \alias{unfold_tempest}
-\title{Generate a tempest object}
+\title{Unfold a scene with a tempest operation}
 \usage{
 unfold_tempest(
   data = scene_sticks(),
@@ -30,5 +30,5 @@ unfold_tempest(
 a "tempest" ribbon, data frame with x, y, order, time and id
 }
 \description{
-Generate a tempest object
+Unfold a scene with a tempest operation
 }

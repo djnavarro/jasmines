@@ -1,5 +1,5 @@
 
-#' Determine whether each point lies inside its seed
+#' Unfold a scene with an inside operation
 #'
 #' @param data Data
 #' @param output String specifying a Column name

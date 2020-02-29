@@ -2,7 +2,7 @@
 % Please edit documentation in R/unfold_slice.R
 \name{unfold_slice}
 \alias{unfold_slice}
-\title{Generate a tempest object}
+\title{Unfold a scene with a slice operation}
 \usage{
 unfold_slice(
   data = scene_sticks(),
@@ -30,5 +30,5 @@ unfold_slice(
 a "tempest" ribbon, data frame with x, y, order, time and id
 }
 \description{
-Generate a tempest object
+Unfold a scene with a slice operation
 }

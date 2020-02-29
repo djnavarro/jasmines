@@ -2,7 +2,7 @@
 % Please edit documentation in R/unfold_meander.R
 \name{unfold_meander}
 \alias{unfold_meander}
-\title{Make smoothed brownian bridge time series}
+\title{Unfold a scene with a meander operation}
 \usage{
 unfold_meander(
   data = entity_circle(),
@@ -30,5 +30,5 @@ unfold_meander(
 tibble with columns series, time, x, y
 }
 \description{
-Make smoothed brownian bridge time series
+Unfold a scene with a meander operation
 }

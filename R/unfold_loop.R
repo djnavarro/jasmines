@@ -3,7 +3,7 @@
 #   seq(0, 2*pi, length.out = npoints + 1)[1:npoints]
 # }
 
-#' Take a seed object and convert each point to a loop
+#' Unfold a scene with a loop operation
 #'
 #' @param data data
 #' @param points number of time points

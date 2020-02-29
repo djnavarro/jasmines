@@ -1,5 +1,5 @@
 
-#' Make smoothed brownian bridge time series
+#' Unfold a scene with a meander operation
 #'
 #' @param data data frame with x, y, etc
 #' @param iterations number of time points in the time series

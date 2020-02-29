@@ -2,7 +2,7 @@
 % Please edit documentation in R/unfold_worley.R
 \name{unfold_worley}
 \alias{unfold_worley}
-\title{Colour points using Worley noise}
+\title{Unfold a scene with a worley operation}
 \usage{
 unfold_worley(data, scatter = FALSE, output = "order", ...)
 }
@@ -16,5 +16,5 @@ unfold_worley(data, scatter = FALSE, output = "order", ...)
 \item{...}{arguments to pass to ambient::genworley()}
 }
 \description{
-Colour points using Worley noise
+Unfold a scene with a worley operation
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/unfold_loop.R
 \name{unfold_loop}
 \alias{unfold_loop}
-\title{Take a seed object and convert each point to a loop}
+\title{Unfold a scene with a loop operation}
 \usage{
 unfold_loop(data, points = 20, radius = 1)
 }
@@ -17,5 +17,5 @@ unfold_loop(data, points = 20, radius = 1)
 a tibble with x, y, id and time
 }
 \description{
-Take a seed object and convert each point to a loop
+Unfold a scene with a loop operation
 }

@@ -2,10 +2,10 @@
 #'
 #' @param from Path to original file
 #' @param to Path to destination file
-#' @param background Background colour
-#' @param crop Proportion of (smaller dimension of) image to crop to
-#' @param text Text annotation
+#' @param text_label Text annotation
 #' @param text_colour Colour of text annotation
+#' @param border_colour Colour of the border region
+#' @param border_opacity Opacity of the border region
 #'
 #' @export
 as_hex <- function(from, to, text_label = NULL, text_colour = "white",
@@ -185,7 +185,7 @@ sticker_annotate <- function(image, text_label, text_colour, text_size) {
   width <- magick::image_info(image)$width
   height <- magick::image_info(image)$height
 
-  if(!is.null(text)) {
+  if(!is.null(text_label)) {
     image <- magick::image_annotate(
       image = image,
       color = text_colour,

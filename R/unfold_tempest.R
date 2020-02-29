@@ -1,4 +1,4 @@
-#' Generate a tempest object
+#' Unfold a scene with a tempest operation
 #'
 #' @param data data frame with x, y, id, and more
 #' @param iterations how many times should we iterate the curl noise?

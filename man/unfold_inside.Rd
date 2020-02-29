@@ -2,7 +2,7 @@
 % Please edit documentation in R/unfold_inside.R
 \name{unfold_inside}
 \alias{unfold_inside}
-\title{Determine whether each point lies inside its seed}
+\title{Unfold a scene with an inside operation}
 \usage{
 unfold_inside(data, output = "inside")
 }
@@ -15,5 +15,5 @@ unfold_inside(data, output = "inside")
 Returns the original data tibble with a new column added
 }
 \description{
-Determine whether each point lies inside its seed
+Unfold a scene with an inside operation
 }

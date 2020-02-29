@@ -18,13 +18,13 @@ as_hex(
 
 \item{to}{Path to destination file}
 
+\item{text_label}{Text annotation}
+
 \item{text_colour}{Colour of text annotation}
 
-\item{background}{Background colour}
+\item{border_colour}{Colour of the border region}
 
-\item{crop}{Proportion of (smaller dimension of) image to crop to}
-
-\item{text}{Text annotation}
+\item{border_opacity}{Opacity of the border region}
 }
 \description{
 Convert image to hex
