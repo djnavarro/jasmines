@@ -2,7 +2,7 @@
 % Please edit documentation in R/scene_legacy.R
 \name{scene_sticks}
 \alias{scene_sticks}
-\title{Scene from a set of random sticks}
+\title{Create a scene comprised of lines of varying length and orientation}
 \usage{
 scene_sticks(seed = use_seed(1), n = 10, grain = 100)
 }
@@ -17,5 +17,5 @@ scene_sticks(seed = use_seed(1), n = 10, grain = 100)
 a tibble with columns x, y and id
 }
 \description{
-Scene from a set of random sticks
+Create a scene comprised of lines of varying length and orientation
 }

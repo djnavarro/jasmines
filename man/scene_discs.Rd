@@ -2,7 +2,7 @@
 % Please edit documentation in R/scene_legacy.R
 \name{scene_discs}
 \alias{scene_discs}
-\title{Seed shaped like concentric rings}
+\title{Create a scene comprised of concentric circles}
 \usage{
 scene_discs(seed = use_seed(1), points = 100, rings = 3, size = 2)
 }
@@ -16,5 +16,5 @@ scene_discs(seed = use_seed(1), points = 100, rings = 3, size = 2)
 \item{size}{Diameter of the outermost ring}
 }
 \description{
-Seed shaped like concentric rings
+Create a scene comprised of concentric circles
 }

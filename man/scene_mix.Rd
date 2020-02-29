@@ -2,7 +2,7 @@
 % Please edit documentation in R/scene_gridmix.R
 \name{scene_mix}
 \alias{scene_mix}
-\title{Create a scene that places randomly sampled entities}
+\title{Create a scene with entities placed randomly}
 \usage{
 scene_mix(
   seed = use_seed(1),
@@ -39,5 +39,5 @@ scene_mix(
 A tibble with four columns: x, y, id and type
 }
 \description{
-Create a scene that places randomly sampled entities
+Create a scene with entities placed randomly
 }

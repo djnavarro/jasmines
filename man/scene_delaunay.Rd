@@ -2,7 +2,7 @@
 % Please edit documentation in R/scene_delaunay.R
 \name{scene_delaunay}
 \alias{scene_delaunay}
-\title{Generate seed points with a Delaunay triangulation}
+\title{Create a scene using Delaunay triangulation}
 \usage{
 scene_delaunay(seed = use_seed(1), n = 20, grain = 50)
 }
@@ -17,5 +17,5 @@ scene_delaunay(seed = use_seed(1), n = 20, grain = 50)
 A tibble with four columns: x, y, id and type
 }
 \description{
-Generate seed points with a Delaunay triangulation
+Create a scene using Delaunay triangulation
 }

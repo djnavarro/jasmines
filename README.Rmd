@@ -97,3 +97,4 @@ use_seed(1) %>%
   )
 ```
 
+To save the image to a file, the pipeline can include an additional step that uses the `export_image()` function. 

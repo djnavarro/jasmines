@@ -2,7 +2,7 @@
 % Please edit documentation in R/palettes.R
 \name{palette_adjust}
 \alias{palette_adjust}
-\title{Use an adjusted palette}
+\title{Function factory for adjusted palettes}
 \usage{
 palette_adjust(name, prefix, ...)
 }
@@ -17,5 +17,5 @@ palette_adjust(name, prefix, ...)
 A modified
 }
 \description{
-Use an adjusted palette
+Function factory for adjusted palettes
 }

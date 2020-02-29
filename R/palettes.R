@@ -16,7 +16,7 @@ palette_manual <- function(...) {
 }
 
 
-#' Use an adjusted palette
+#' Function factory for adjusted palettes
 #'
 #' @param name Name of the base palette
 #' @param prefix Vector of colours to preprend to the named palette

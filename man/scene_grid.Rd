@@ -2,7 +2,7 @@
 % Please edit documentation in R/scene_gridmix.R
 \name{scene_grid}
 \alias{scene_grid}
-\title{Create a scene with multiple entities laid out in a grid}
+\title{Create a scene with entities on a grid}
 \usage{
 scene_grid(
   seed = use_seed(1),
@@ -36,7 +36,7 @@ scene_grid(
 A tibble with four columns: x, y, id and type
 }
 \description{
-Create a scene with multiple entities laid out in a grid
+Create a scene with entities on a grid
 }
 \details{
 The \code{scene_grid()} function allows multiple entities to be

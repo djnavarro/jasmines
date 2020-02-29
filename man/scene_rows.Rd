@@ -2,7 +2,7 @@
 % Please edit documentation in R/scene_legacy.R
 \name{scene_rows}
 \alias{scene_rows}
-\title{Seed with evenly spaced rows}
+\title{Create a scene comprised of horizontal or vertical lines}
 \usage{
 scene_rows(seed = use_seed(1), n = 10, grain = 100, vertical = FALSE)
 }
@@ -19,5 +19,5 @@ scene_rows(seed = use_seed(1), n = 10, grain = 100, vertical = FALSE)
 A tibble with columns: x, y, id, type, seed
 }
 \description{
-Seed with evenly spaced rows
+Create a scene comprised of horizontal or vertical lines
 }

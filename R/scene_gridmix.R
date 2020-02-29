@@ -18,7 +18,7 @@ entify <- function(.x) {
 
 
 
-#' Create a scene with multiple entities laid out in a grid
+#' Create a scene with entities on a grid
 #'
 #' @param seed Seed number to attach
 #' @param xpos Numeric vector specifying horizontal locations
@@ -78,7 +78,7 @@ scene_grid <- function(
 
 
 
-#' Create a scene that places randomly sampled entities
+#' Create a scene with entities placed randomly
 #'
 #' @param seed Seed number to attach
 #' @param n Number of entities

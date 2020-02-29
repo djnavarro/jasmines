@@ -1,5 +1,5 @@
 
-#' Seed shaped like concentric rings
+#' Create a scene comprised of concentric circles
 #'
 #' @param seed Seed number to attach
 #' @param points Total number of interior points
@@ -33,7 +33,7 @@ scene_discs <- function(seed = use_seed(1), points = 100, rings = 3, size = 2) {
 }
 
 
-#' Scene from a set of random sticks
+#' Create a scene comprised of lines of varying length and orientation
 #'
 #' @param seed Seed number to attach
 #' @param n how many sticks
@@ -56,7 +56,7 @@ scene_sticks <- function(seed = use_seed(1), n = 10, grain = 100) {
 }
 
 
-#' Seed with evenly spaced rows
+#' Create a scene comprised of horizontal or vertical lines
 #'
 #' @param seed Seed number to attach
 #' @param n Number of rows
@@ -88,7 +88,7 @@ scene_rows <- function(seed = use_seed(1), n = 10, grain = 100, vertical = FALSE
 }
 
 
-#' Seed with a random set of bubbles
+#' Create a scene comprised of circles of varying size and location
 #'
 #' @param seed Seed number to attach
 #' @param n Number of circles

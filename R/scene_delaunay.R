@@ -1,4 +1,4 @@
-#' Generate seed points with a Delaunay triangulation
+#' Create a scene using Delaunay triangulation
 #'
 #' @param seed The RNG seed
 #' @param n Number of vertices

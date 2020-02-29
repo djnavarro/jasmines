@@ -2,7 +2,7 @@
 % Please edit documentation in R/scene_legacy.R
 \name{scene_bubbles}
 \alias{scene_bubbles}
-\title{Seed with a random set of bubbles}
+\title{Create a scene comprised of circles of varying size and location}
 \usage{
 scene_bubbles(seed = use_seed(1), n = 2, grain = 100)
 }
@@ -17,5 +17,5 @@ scene_bubbles(seed = use_seed(1), n = 2, grain = 100)
 A tibble with four columns: x, y, id and type
 }
 \description{
-Seed with a random set of bubbles
+Create a scene comprised of circles of varying size and location
 }
