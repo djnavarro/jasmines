@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Unfold a scene with a tempest operation — unfold_tempest • jasmines</title>
+<title>Unfold a scene with a warp operation — unfold_warp • jasmines</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Unfold a scene with a tempest operation — unfold_tempest" />
-<meta property="og:description" content="Unfold a scene with a tempest operation" />
+<meta property="og:title" content="Unfold a scene with a warp operation — unfold_warp" />
+<meta property="og:description" content="Unfold a scene with a warp operation" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,22 +105,21 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Unfold a scene with a tempest operation</h1>
-    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/unfold_tempest.R'><code>R/unfold_tempest.R</code></a></small>
-    <div class="hidden name"><code>unfold_tempest.Rd</code></div>
+    <h1>Unfold a scene with a warp operation</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/jasmines/blob/master/R/unfold_warp.R'><code>R/unfold_warp.R</code></a></small>
+    <div class="hidden name"><code>unfold_warp.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Unfold a scene with a tempest operation</p>
+    <p>Unfold a scene with a warp operation</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unfold_tempest</span>(
+    <pre class="usage"><span class='fu'>unfold_warp</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='scene_sticks.html'>scene_sticks</a></span>(),
   <span class='kw'>iterations</span> <span class='kw'>=</span> <span class='fl'>6</span>,
   <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.02</span>,
   <span class='kw'>scatter</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>output1</span> <span class='kw'>=</span> <span class='st'>"time"</span>,
-  <span class='kw'>output2</span> <span class='kw'>=</span> <span class='st'>"order"</span>
+  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"time"</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -132,29 +131,25 @@
     </tr>
     <tr>
       <th>iterations</th>
-      <td><p>how many times should we iterate the curl noise?</p></td>
+      <td><p>how many times should we iterate the noise?</p></td>
     </tr>
     <tr>
       <th>scale</th>
-      <td><p>how large is each curl step?</p></td>
+      <td><p>how large is each step?</p></td>
     </tr>
     <tr>
       <th>scatter</th>
       <td><p>should the noise seed be "scattered"?</p></td>
     </tr>
     <tr>
-      <th>output1</th>
-      <td><p>name of the primary unfolding variable to add (e.g., time)</p></td>
-    </tr>
-    <tr>
-      <th>output2</th>
-      <td><p>name of the secondary unfolding variable to add (e.g., order)</p></td>
+      <th>output</th>
+      <td><p>name of the output variable (default = time)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a "tempest" ribbon, data frame with x, y, order, time and id</p>
+    <p>thing</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
