@@ -8,3 +8,4 @@
 ^pkgdown$
 ^.workbch$
 ^misc$
+^pkgdown-tweaks.R$
