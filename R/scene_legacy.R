@@ -28,6 +28,7 @@ scene_discs <- function(seed = use_seed(1), points = 100, rings = 3, size = 2) {
     .f = unfold
   )
   points$type <- "circle"
+  points$ind <- 1:length(points$x)
   points$seed <- seed
   return(points)
 }
@@ -50,6 +51,7 @@ scene_sticks <- function(seed = use_seed(1), n = 10, grain = 100) {
     ))
   }
   points <- purrr::map_dfr(1:n, make_stick, grain = grain)
+  points$ind <- 1:length(points$x)
   points$type <- "line"
   points$seed <- seed
   return(points)
@@ -82,6 +84,7 @@ scene_rows <- function(seed = use_seed(1), n = 10, grain = 100, vertical = FALSE
     }
   }
   points <- purrr::map_dfr(1:n, make_row, grain = grain, vertical = vertical)
+  points$ind <- 1:length(points$x)
   points$type <- "line"
   points$seed <- seed
   return(points)
@@ -113,6 +116,7 @@ scene_bubbles <- function(seed = use_seed(1), n = 2, grain = 100) {
   }
 
   points <- purrr::map_dfr(1:n, make_bubble, grain = grain)
+  points$ind <- 1:length(points$x)
   points$type <- "circle"
   points$seed <- seed
   return(points)
